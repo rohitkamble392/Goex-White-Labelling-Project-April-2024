@@ -1,0 +1,175 @@
+@extends('layouts.main') 
+@section('title', 'EMM Dashboard')
+@section('content')
+    <!-- push external head elements to head -->
+    @push('head')
+
+        <link rel="stylesheet" href="{{ asset('plugins/weather-icons/css/weather-icons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('plugins/owl.carousel/dist/assets/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('plugins/owl.carousel/dist/assets/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('plugins/chartist/dist/chartist.min.css') }}">
+    @endpush
+
+
+    <div class="container-fluid">
+    	<div class="row">
+    		<!-- page statustic chart start -->
+            <div class="col-xl-3 col-md-6">
+                <div class="card card-blue text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <a href="products2" class="text-white">
+                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
+                                    <p class="mb-0">{{ __('Accounts')}}</p>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                            <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card card-blue text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                        <div class="col-8">
+                                <a href="emm-sales" class="text-white">
+                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
+                                    <p class="mb-0">{{ __('Sales')}}</p>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                            <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card card-blue text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                        <div class="col-8">
+                                <a href="emm-marketing" class="text-white">
+                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
+                                    <p class="mb-0">{{ __('Marketing')}}</p>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                            <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card card-blue text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h4 class="mb-0">{{ __('3,612')}}</h4>
+                                <p class="mb-0">{{ __('Field')}}</p>
+                            </div>
+                            <div class="col-4 text-right">
+                            <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- page statustic chart end -->
+
+            
+
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header d-block">
+                        <h3>{{ __('Users List')}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="dt-responsive">
+                            <table id="simpletable"
+                                   class="table table-striped table-bordered nowrap table-responsive text-center">
+                                <thead>
+                                <tr>
+                                    <th>{{ __('User ID')}}</th>
+                                    <th>{{ __('User Name')}}</th>
+                                    <th>{{ __('Department')}}</th>
+                                    <th>{{ __('Device')}}</th>
+                                    <th>{{ __('Device ID')}}</th>
+                                    <th>{{ __('IMEI')}}</th>
+                                    <th>{{ __('Applied Policy')}}</th>
+                                    <th>{{ __('Last Policy')}}</th>
+                                    <th>{{ __('Action')}}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ __('101')}}</td>
+                                        <td>{{ __('Sample')}}</td>
+                                        <td>{{ __('Account')}}</td>
+                                        <td>{{ __('Redmi Note 8 Pro')}}</td>
+                                        <td>{{ __('3f467c6bd5f2f25c')}}</td>
+                                        <td>{{ __('352976390106974')}}</td>
+                                        <td>{{ __('UnlockDevice')}}</td>
+                                        <td>{{ __('LockDevice')}}</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <a href="#"><i class="ik ik-eye"></i></a>
+                                                <a href="emm-edit-user"><i class="ik ik-edit-2"></i></a>
+                                                <a href="#"><i class="ik ik-trash-2"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ __('102')}}</td>
+                                        <td>{{ __('Sample')}}</td>
+                                        <td>{{ __('Account')}}</td>
+                                        <td>{{ __('Redmi Note 8 Pro')}}</td>
+                                        <td>{{ __('3f467c6bd5f2f25c')}}</td>
+                                        <td>{{ __('352976390106974')}}</td>
+                                        <td>{{ __('UnlockDevice')}}</td>
+                                        <td>{{ __('LockDevice')}}</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <a href="#"><i class="ik ik-eye"></i></a>
+                                                <a href="emm-edit-user"><i class="ik ik-edit-2"></i></a>
+                                                <a href="#"><i class="ik ik-trash-2"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                    </div>
+                    </div>
+                </div>
+                <!-- Language - Comma Decimal Place table end -->
+            </div>  
+    	</div>
+    </div>
+
+    	<!-- push external js -->
+        @push('script')
+        <script src="{{ asset('plugins/owl.carousel/dist/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('plugins/chartist/dist/chartist.min.js') }}"></script>
+        <script src="{{ asset('plugins/flot-charts/jquery.flot.js') }}"></script>
+        <script src="{{ asset('plugins/flot-charts/curvedLines.js') }}"></script>
+        <script src="{{ asset('plugins/flot-charts/jquery.flot.tooltip.min.js') }}"></script>
+
+        <script src="{{ asset('plugins/amcharts/amcharts.js') }}"></script>
+        <script src="{{ asset('plugins/amcharts/serial.js') }}"></script>
+        <script src="{{ asset('plugins/amcharts/themes/light.js') }}"></script>
+       
+        
+        <script src="{{ asset('js/widget-statistic.js') }}"></script>
+        <script src="{{ asset('js/widget-data.js') }}"></script>
+        <script src="{{ asset('js/dashboard-charts.js') }}"></script>
+    
+    <!-- push external js -->
+    <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('js/datatables.js') }}"></script>
+    @endpush
+@endsection
