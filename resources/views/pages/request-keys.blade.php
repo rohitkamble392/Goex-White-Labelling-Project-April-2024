@@ -6,7 +6,7 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-dollar-sign bg-blue"></i>
+                        <i class="ik ik-dollar-sign bg-secondary"></i>
                         <div class="d-inline">
                             <h5>{{ __('Request for Keys')}}</h5>
                         </div>
@@ -16,9 +16,8 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{route('dashboard-distributor')}}"><i class="ik ik-home"></i></a>
+                                <a href="{{route('dashboard-company')}}"><i class="ik ik-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">{{ __('Pricing')}}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -45,7 +44,7 @@
                       <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Free Subdomain</li>
                       <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
                     </ul>
-                    <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                    <a href="#" class="btn btn-block btn-secondary text-uppercase">Button</a>
                   </div>
                 </div>
               </div>
@@ -66,7 +65,7 @@
                       <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Subdomain</li>
                       <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status Reports</li>
                     </ul>
-                    <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                    <a href="#" class="btn btn-block btn-secondary text-uppercase">Button</a>
                   </div>
                 </div>
               </div>
@@ -87,7 +86,7 @@
                       <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free Subdomains</li>
                       <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports</li>
                     </ul>
-                    <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a>
+                    <a href="#" class="btn btn-block btn-secondary text-uppercase">Button</a>
                   </div>
                 </div>
               </div>

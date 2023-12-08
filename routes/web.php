@@ -162,44 +162,40 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/company-dashboard', function () {return view('pages.dashboard-company');})->name('dashboard-company');
 
 	// SUPERSTOKIST ROUTES START
-	Route::get('/dashboard-superstokist', function () {return view('pages.dashboard-superstokist');})->name('dashboard-superstokist');
+	Route::get('/superstokist-dashboard', function () {return view('pages.dashboard-superstokist');})->name('dashboard-superstokist');
 	Route::get('/super-stokist-details', function () {return view('pages.super-stokist-details');})->name('super-stokist-details');
 	Route::get('/all-superstokist', function () { return view('pages.all-superstokist'); });
-	Route::get('/active-superstokist', function () { return view('pages.active-superstokist'); });
-	Route::get('/deactive-superstokist', function () { return view('pages.deactive-superstokist'); });
+	Route::get('/active-superstokist/{id}', function () { return view('pages.active-superstokist'); });
 	Route::get('/add-superstokist', function () { return view('pages.add-superstokist'); });
 	// SUPERSTOKIST ROUTES END
 
 	// DISTRIBUTOR ROUTES START
-	Route::get('/dashboard-distributor', function () {return view('pages.dashboard-distributor');})->name('dashboard-distributor');
+	Route::get('/distributor-dashboard', function () {return view('pages.dashboard-distributor');})->name('dashboard-distributor');
 	Route::get('/distributor-details', function () {return view('pages.distributor-details');})->name('distributor-details');
 	Route::get('/all-distributor', function () { return view('pages.all-distributor'); });
-	Route::get('/active-distributors', function () { return view('pages.active-distributors'); });
-	Route::get('/deactive-distributors', function () { return view('pages.deactive-distributors'); });
+	Route::get('/active-distributors/{id}', function () { return view('pages.active-distributors'); });
 	Route::get('/add-distributor', function () { return view('pages.add-distributor'); });
 	// DISTRIBUTOR ROUTES END
 
 	// EMPLOYEE ROUTES START
-	Route::get('/dashboard-employee', function () {return view('pages.dashboard-employee');})->name('dashboard-employee');
+	Route::get('/employee-dashboard', function () {return view('pages.dashboard-employee');})->name('dashboard-employee');
 	Route::get('/employee-details', function () {return view('pages.employee-details');})->name('employee-details');
-	Route::get('/all-employee', function () { return view('pages.all-employee'); });
-	Route::get('/active-employees', function () { return view('pages.active-employees'); });
-	Route::get('/deactive-employees', function () { return view('pages.deactive-employees'); });
+	Route::get('/all-employees', function () { return view('pages.all-employees'); });
+	Route::get('/active-employees/{id}', function () { return view('pages.active-employees'); });
 	Route::get('/add-employee', function () { return view('pages.add-employee'); });
 	// EMPLOYEE ROUTES END
 
 	// RETAILER ROUTES START
-	Route::get('/dashboard-retailer', function () {return view('pages.dashboard-retailer');})->name('dashboard-retailer');
+	Route::get('/retailer-dashboard', function () {return view('pages.dashboard-retailer');})->name('dashboard-retailer');
 	Route::get('/retailer-details', function () {return view('pages.retailer-details');})->name('retailer-details');
-	Route::get('/all-retailer', function () { return view('pages.all-retailer'); });
-	Route::get('/active-retailers', function () { return view('pages.active-retailers'); });
-	Route::get('/deactive-retailers', function () { return view('pages.deactive-retailers'); });
+	Route::get('/all-retailers', function () { return view('pages.all-retailers'); });
+	Route::get('/active-retailers/{id}', function () { return view('pages.active-retailers'); });
 	Route::get('/add-retailer', function () { return view('pages.add-retailer'); });
 	// RETAILER ROUTES END
 
 	// CUSTOMER ROUTES START
 	Route::get('/customer-details', function () {return view('pages.customer-details');})->name('customer-details');
-	Route::get('/all-customer', function () { return view('pages.all-customer'); });
+	Route::get('/all-customers', function () { return view('pages.all-customers'); });
 	Route::get('/add-customer', function () { return view('pages.add-customer'); });
 	// CUSTOMER ROUTES END
 

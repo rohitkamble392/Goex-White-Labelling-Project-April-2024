@@ -14,7 +14,7 @@
     	<div class="row">
     		<!-- page statustic chart start -->
             <div class="col-xl-3 col-md-6">
-                <div class="card card-red text-white">
+                <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
@@ -27,48 +27,12 @@
                                 <i class="ik ik-user f-30"></i>
                             </div>
                         </div>
-                        <div id="Widget-line-chart1" class="chart-line chart-shadow"></div>
+                        {{-- <div id="Widget-line-chart1" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
-                <div class="card card-green text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="#" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Active')}}</p>
-                                </a>
-                            </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
-                            </div>
-                        </div>
-                        <div id="Widget-line-chart2" class="chart-line chart-shadow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card card-blue text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="#" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Deactive')}}</p>
-                                </a>
-                            </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
-                            </div>
-                        </div>
-                        <div id="Widget-line-chart3" class="chart-line chart-shadow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card card-yellow text-white">
+                <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
@@ -81,7 +45,7 @@
                                 <i class="ik ik-user f-30"></i>
                             </div>
                         </div>
-                        <div id="Widget-line-chart4" class="chart-line chart-shadow"></div>
+                        {{-- <div id="Widget-line-chart4" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-user-plus bg-blue"></i>
+                        <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
                             <h5>{{ __('Deactive Super Stokist')}}</h5>
                         </div>

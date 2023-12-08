@@ -7,10 +7,9 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-user-plus bg-blue"></i>
+                        <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
                             <h5>{{ __('Add Distributor')}}</h5>
-                            <span>{{ __('Create New Distributor')}}</span>
                         </div>
                     </div>
                 </div>
@@ -64,7 +63,7 @@
                                     <input type="text" class="form-control" placeholder="Distributor State" readonly>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary">Submit</button>
                         </form>
                     </div>
                 </div>

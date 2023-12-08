@@ -14,7 +14,7 @@
     	<div class="row">
     		<!-- page statustic chart start -->
             <div class="col-xl-4 col-md-6">
-                <div class="card card-red text-white">
+                <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-6">
-                <div class="card card-blue text-white">
+                <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-6">
-                <div class="card card-green text-white">
+                <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-6">
-                <div class="card card-red text-white">
+                <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-6">
-                <div class="card card-blue text-white">
+                <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">

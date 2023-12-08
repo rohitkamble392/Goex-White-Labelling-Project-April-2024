@@ -7,7 +7,7 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-user-plus bg-blue"></i>
+                        <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
                             <h5>{{ __('Add customer')}}</h5>
                         </div>
@@ -102,7 +102,7 @@
                                     <input type="number" class="form-control" placeholder="Requested Policy">
                                 </div>
                             </div>
-                            <div class="card-header"><button type="button" class="btn btn-primary">{{ __('Submit')}}</button></div>
+                            <div class="card-header"><button type="button" class="btn btn-secondary">{{ __('Submit')}}</button></div>
                         </form>
                     </div>
                 </div>
