@@ -15,6 +15,7 @@ use App\Http\Controllers\addpolicyController;
 use App\Http\Controllers\addapplicationController;
 use App\Http\Controllers\adddepartmentController;
 use App\Http\Controllers\addemployeeController;
+use App\Http\Controllers\RetailerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,6 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/dashboard', function () { 
 		return view('pages.dashboard'); 
 	})->name('dashboard');
-
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){
@@ -154,12 +154,20 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/purchases/create', function () { return view('inventory.purchase.create'); }); 
 	Route::get('/customers', function () { return view('inventory.people.customers'); }); 
 	Route::get('/suppliers', function () { return view('inventory.people.suppliers'); }); 
-
-
 	// SAMPLE PROJECT START
 
-	// THIS IS COMPANY DASHBOARD ROUTE
+	// SUPER ADMIN START
+	Route::get('/superadmin-dashboard', function () {return view('pages.dashboard-superadmin');})->name('dashboard-superadmin');
+	// SUPER ADMIN END
+
+	// COMPANY ROUTES START
 	Route::get('/company-dashboard', function () {return view('pages.dashboard-company');})->name('dashboard-company');
+	Route::get('/company-details', function () {return view('pages.company-details');})->name('company-details');
+	Route::get('/all-companies', function () { return view('pages.all-companies'); });
+	Route::get('/active-companies/{id}', function () { return view('pages.active-companies'); });
+	Route::get('/add-company', function () { return view('pages.add-company'); });
+
+	// COMPANY ROUTES END
 
 	// SUPERSTOKIST ROUTES START
 	Route::get('/superstokist-dashboard', function () {return view('pages.dashboard-superstokist');})->name('dashboard-superstokist');
@@ -167,6 +175,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/all-superstokist', function () { return view('pages.all-superstokist'); });
 	Route::get('/active-superstokist/{id}', function () { return view('pages.active-superstokist'); });
 	Route::get('/add-superstokist', function () { return view('pages.add-superstokist'); });
+
+	// Route::get('/superstokist-dashboard',[SuperStokistController::class,'index'])->name('superstokist.index');
 	// SUPERSTOKIST ROUTES END
 
 	// DISTRIBUTOR ROUTES START
@@ -191,6 +201,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/all-retailers', function () { return view('pages.all-retailers'); });
 	Route::get('/active-retailers/{id}', function () { return view('pages.active-retailers'); });
 	Route::get('/add-retailer', function () { return view('pages.add-retailer'); });
+
 	// RETAILER ROUTES END
 
 	// CUSTOMER ROUTES START

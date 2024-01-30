@@ -18,7 +18,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{url('dashboard-company')}}"><i class="ik ik-home"></i></a>
+                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                         </ol>
                     </nav>
@@ -34,34 +34,34 @@
                     <form>
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Enter Retailer Name">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Retailer Name">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Enter Shop Name">
+                                    <input type="text" name="shop_name" class="form-control" placeholder="Enter Shop Name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Enter Mobile No">
+                                    <input type="number" name="mobile" class="form-control" placeholder="Enter Mobile No">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="email" class="form-control" placeholder="Enter Email Address">
+                                    <input type="email" name="email" class="form-control" placeholder="Enter Email Address">
                                 </div>
                             </div>
                             <div class="form-group row">
                             <div class="col-sm-6">
-                                    <textarea type="text" class="form-control" placeholder="Enter Address : "></textarea>
+                                    <textarea type="text" name="address" class="form-control" placeholder="Enter Address : "></textarea>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Enter PIN Code">
+                                    <input type="number" name="pin" class="form-control" placeholder="Enter PIN Code">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="District" readonly>
+                                    <input type="text" name="district" class="form-control" placeholder="District" readonly>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="State" readonly>
+                                    <input type="text" name="state" class="form-control" placeholder="State" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">

@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Employee Details')
+@section('title', 'Super Admin Dashboard')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -13,14 +13,14 @@
     <div class="container-fluid">
     	<div class="row">
     		<!-- page statustic chart start -->
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-4 col-md-6">
                 <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="all-employees" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Total Employee')}}</p>
+                                <a href="company-details" class="text-white">
+                                    <h4 class="mb-0">{{ __('3,676')}}</h4>
+                                    <p class="mb-0">{{ __('Companies')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">
@@ -30,14 +30,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-4 col-md-6">
                 <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="active-employees" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Active')}}</p>
+                                <a href="super-stokist-details" class="text-white">
+                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
+                                    <p class="mb-0">{{ __('Super Stokist')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">
@@ -47,14 +47,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-4 col-md-6">
                 <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="deactive-employees" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Deactive')}}</p>
+                                <a href="distributor-details" class="text-white">
+                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
+                                    <p class="mb-0">{{ __('Distributor')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">
@@ -64,14 +64,65 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-4 col-md-6">
                 <div class="card bg-secondary text-white">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="add-employee" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Add Employee')}}</p>
+                                <a href="employee-details" class="text-white">
+                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
+                                    <p class="mb-0">{{ __('Employee')}}</p>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-secondary text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <a href="retailer-details" class="text-white">
+                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
+                                    <p class="mb-0">{{ __('Retailer')}}</p>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-secondary text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <a href="customer-details" class="text-white">
+                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
+                                    <p class="mb-0">{{ __('Customer')}}</p>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-secondary text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <a href="policy-details" class="text-white">
+                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
+                                    <p class="mb-0">{{ __('Policies')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">

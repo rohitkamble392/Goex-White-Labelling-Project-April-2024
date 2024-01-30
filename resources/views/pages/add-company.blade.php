@@ -7,7 +7,7 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-user-plus bg-blue"></i>
+                        <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
                             <h5>{{ __('Add Company')}}</h5>
                         </div>
@@ -17,7 +17,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{url('emm-dashboard')}}"><i class="ik ik-home"></i></a>
+                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                         </ol>
                     </nav>
@@ -29,79 +29,74 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                    <!-- <form class="forms-sample" method="POST" action="/inventory/products"> -->
-                    <form class="forms-sample" method="POST" action="{{ route('save-company') }}" >
-                        @csrf                           
-                        <div class="row">
+                    <form>
+                            <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="name">Name<span class="text-red">*</span></label>
-                                        <input id="name" type="text" class="form-control" name="name" value="" placeholder="Enter Name" required="">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description">Description<span class="text-red">*</span></label>
-                                        <textarea id="description" type="text" class="form-control" name="description" value="" placeholder="Enter Description" required=""></textarea>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email<span class="text-red">*</span></label>
-                                        <input id="email" type="email" class="form-control" name="email" value="" placeholder="Enter Email" required="">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password<span class="text-red">*</span></label>
-                                        <input id="password" type="password" class="form-control" name="password" value="" placeholder="Enter Password" required="">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="mobile">Mobile<span class="text-red">*</span></label>
-                                        <input id="mobile" type="number" class="form-control" name="mobile" value="" placeholder="Enter Mobile No." required="">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="gst">GST No<span class="text-red">*</span></label>
-                                        <input id="gst" type="text" class="form-control" name="gst" value="" placeholder="Enter GST No." required="">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Name">
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="address">Address<span class="text-red">*</span></label>
-                                        <textarea id="address" type="text" class="form-control" name="address" value="" placeholder="Enter Address" required=""></textarea>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                <div class="form-group">
-                                        <label for="pin">PIN Code<span class="text-red">*</span></label>
-                                        <input id="pin" type="number" class="form-control" name="pin" value="" placeholder="Enter PIN Code" required="">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="state">State<span class="text-red">*</span></label>
-                                        <input id="state" type="text" class="form-control" name="state" value="" placeholder="Enter State" required="">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="district">District<span class="text-red">*</span></label>
-                                        <input id="district" type="text" class="form-control" name="district" value="" placeholder="Enter District" required="">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Company Logo</label>
-                                        <div class="input-images" data-input-name="company-logo" data-label="Drag & Drop Company Logo here or click to browse"></div>
-                                    </div>
+                                    <input type="text" name="shop" class="form-control" placeholder="Enter Shop Name">
                                 </div>
-
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
+                                    <input type="number" name="mobile" class="form-control" placeholder="Enter Mobile No">
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                            <img id="my-image" src="/img/test14.png" class="img-fluid" alt=""  style="display: none;">
-                                    </div>
+                                    <input type="email" name="email" class="form-control" placeholder="Enter Email Address">
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                            <div class="col-sm-6">
+                                    <textarea type="text" name="address" class="form-control" placeholder="Enter Address"></textarea>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="number" name="pin" class="form-control" placeholder="Enter PIN Code">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <input type="text" name="district" class="form-control" placeholder="District">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" name="state" class="form-control" placeholder="State">
+                                </div>
+                            </div>
+                            <div class="card-header"><h3>{{ __('Company Policy Details')}}</h3></div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <select name="" id="" class="form-control">
+                                        <option value="">Select Policy Type</option>
+                                        <option value="">Smart Policy</option>
+                                        <option value="">Regular Policy</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" placeholder="Total Policy">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" placeholder="Per Policy Rate">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" placeholder="Total Amount">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" placeholder="Paid Amount">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" placeholder="Unpaid Amount">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" placeholder="Requested Policy">
+                                </div>
+                            </div>
+                            <div class="card-header"><button type="button" class="btn btn-secondary">{{ __('Submit')}}</button></div>
                         </form>
                     </div>
                 </div>

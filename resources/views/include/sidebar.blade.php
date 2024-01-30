@@ -2,7 +2,7 @@
     <div class="sidebar-header">
         <a class="header-brand" href="{{route('dashboard-company')}}">
             <div class="logo-img">
-               <img height="30" src="{{ asset('img/logo_white.png')}}" class="header-brand-img" title="RADMIN"> 
+               <img height="30" src="https://goelectronix.com/img/logo-bg.png" class="header-brand-img" title="RADMIN"> 
             </div>
         </a>
         <div class="sidebar-action"><i class="ik ik-arrow-left-circle"></i></div>
@@ -17,6 +17,9 @@
     <div class="sidebar-content">
         <div class="nav-container">
             <nav id="main-menu-navigation" class="navigation-main">
+                <div class="nav-item {{ ($segment1 == 'dashboard-superadmin') ? 'active' : '' }}">
+                    <a href="{{route('dashboard-superadmin')}}"><i class="ik ik-user"></i><span>{{ __('Super Admin Dashboard')}}</span></a>
+                </div>
                 <div class="nav-item {{ ($segment1 == 'dashboard-company') ? 'active' : '' }}">
                     <a href="{{route('dashboard-company')}}"><i class="ik ik-user"></i><span>{{ __('Company Dashboard')}}</span></a>
                 </div>

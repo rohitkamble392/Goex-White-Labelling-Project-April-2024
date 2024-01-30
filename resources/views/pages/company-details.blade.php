@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Employee Details')
+@section('title', 'Company Details')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -18,15 +18,16 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="all-employees" class="text-white">
+                                <a href="all-companies" class="text-white">
                                     <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Total Employee')}}</p>
+                                    <p class="mb-0">{{ __('Total Companies')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">
                                 <i class="ik ik-user f-30"></i>
                             </div>
                         </div>
+                        {{-- <div id="Widget-line-chart1" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>
@@ -35,8 +36,8 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="active-employees" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
+                                <a href="#" class="text-white">
+                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
                                     <p class="mb-0">{{ __('Active')}}</p>
                                 </a>
                             </div>
@@ -44,6 +45,7 @@
                                 <i class="ik ik-user f-30"></i>
                             </div>
                         </div>
+                        {{-- <div id="Widget-line-chart2" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>
@@ -52,8 +54,8 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="deactive-employees" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
+                                <a href="#" class="text-white">
+                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
                                     <p class="mb-0">{{ __('Deactive')}}</p>
                                 </a>
                             </div>
@@ -61,6 +63,7 @@
                                 <i class="ik ik-user f-30"></i>
                             </div>
                         </div>
+                        {{-- <div id="Widget-line-chart3" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>
@@ -69,15 +72,16 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="add-employee" class="text-white">
+                                <a href="add-company" class="text-white">
                                     <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Add Employee')}}</p>
+                                    <p class="mb-0">{{ __('Add Company')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">
                                 <i class="ik ik-user f-30"></i>
                             </div>
                         </div>
+                        {{-- <div id="Widget-line-chart4" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>

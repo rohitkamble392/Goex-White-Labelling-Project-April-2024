@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'All Super Stokist')
+@section('title', 'All Companies')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -17,7 +17,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('All Super Stokist')}}</h5>
+                            <h5>{{ __('All Companies')}}</h5>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                                 <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="add-superstokist">{{ __('Add Supe Stokist')}}</a>
+                                <a href="add-company">{{ __('Add Company')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -44,8 +44,8 @@
                                    class="table table-striped table-bordered nowrap table-responsive text-center">
                                 <thead>
                                 <tr>
-                                    <th>{{ __('Super Stokist ID')}}</th>
-                                    <th>{{ __('Super Stokist Name')}}</th>
+                                    <th>{{ __('Company ID')}}</th>
+                                    <th>{{ __('Company Name')}}</th>
                                     <th>{{ __('Shop Name')}}</th>
                                     <th>{{ __('Mobile No')}}</th>
                                     <th>{{ __('Address')}}</th>

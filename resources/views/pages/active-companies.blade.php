@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Active Companies')
+@section('title', 'Active Super Stokist')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -10,16 +10,14 @@
         <link rel="stylesheet" href="{{ asset('plugins/chartist/dist/chartist.min.css') }}">
     @endpush
 
-
     <div class="container-fluid">
-    <div class="page-header">
+        <div class="page-header">
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-user-plus bg-blue"></i>
+                        <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Active Companies')}}</h5>
-                            <span>{{ __('All Active Companies')}}</span>
+                            <h5>{{ __('Active Super Stokist')}}</h5>
                         </div>
                     </div>
                 </div>
@@ -27,10 +25,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{url('emm-dashboard')}}"><i class="ik ik-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="add-company">{{ __('Add Company')}}</a>
+                                <a href="{{url('dashboard-company')}}"><i class="ik ik-home"></i></a>
                             </li>
                         </ol>
                     </nav>
@@ -46,45 +41,37 @@
                                    class="table table-striped table-bordered nowrap table-responsive text-center">
                                 <thead>
                                 <tr>
-                                    <th>{{ __('Company ID')}}</th>
-                                    <th>{{ __('Company Name')}}</th>
-                                    <th>{{ __('Company Email')}}</th>
-                                    <th>{{ __('Company Mobile')}}</th>
-                                    <th>{{ __('Company Address')}}</th>
-                                    <th>{{ __('Company GST No.')}}</th>
-                                    <th>{{ __('Company Total Policies')}}</th>
+                                    <th>{{ __('Super Stokist ID')}}</th>
+                                    <th>{{ __('Super Stokist Name')}}</th>
+                                    <th>{{ __('Shop Name')}}</th>
+                                    <th>{{ __('Mobile No')}}</th>
+                                    <th>{{ __('Address')}}</th>
+                                    <th>{{ __('Policy Type')}}</th>
+                                    <th>{{ __('Per Policy Rate')}}</th>
+                                    <th>{{ __('Total Policy')}}</th>
+                                    <th>{{ __('Total Amount')}}</th>
+                                    <th>{{ __('Paid Amount')}}</th>
+                                    <th>{{ __('Unpaid Amount')}}</th>
                                     <th>{{ __('Action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><a href="all-departments">{{ __('101')}}</a></td>
-                                        <td><a href="all-departments">{{ __('Sample1')}}</a></td>
-                                        <td><a href="all-departments">{{ __('sample1@gmail.com')}}</a></td>
-                                        <td><a href="all-departments">{{ __('87238765')}}</a></td>
-                                        <td><a href="all-departments">{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, laudantium.')}}</a></td>
-                                        <td><a href="all-departments">{{ __('ATF7349478239FD')}}</a></td>
-                                        <td><a href="all-departments">{{ __('326')}}</a></td>
+                                        <td>{{ __('101')}}</td>
+                                        <td>{{ __('Vinod Wadkar')}}</td>
+                                        <td>{{ __('Sample Shop')}}</td>
+                                        <td>{{ __('8765432165')}}</td>
+                                        <td>{{ __('Vashi West')}}</td>
+                                        <td>{{ __('Smart Policy')}}</td>
+                                        <td>{{ __('200')}}</td>
+                                        <td>{{ __('200')}}</td>
+                                        <td>{{ __('40,000')}}</td>
+                                        <td>{{ __('15,000')}}</td>
+                                        <td>{{ __('25,000')}}</td>
                                         <td>
                                             <div class="table-actions">
                                                 <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="edit-company"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="all-departments">{{ __('102')}}</a></td>
-                                        <td><a href="all-departments">{{ __('Sample2')}}</a></td>
-                                        <td><a href="all-departments">{{ __('sample2@gmail.com')}}</a></td>
-                                        <td><a href="all-departments">{{ __('87238765')}}</a></td>
-                                        <td><a href="all-departments">{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, laudantium.')}}</a></td>
-                                        <td><a href="all-departments">{{ __('ATF7349478239FD')}}</a></td>
-                                        <td><a href="all-departments">{{ __('152')}}</a></td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="edit-company"><i class="ik ik-edit-2"></i></a>
+                                                <a href="company-edit-superstokist"><i class="ik ik-edit-2"></i></a>
                                                 <a href="#"><i class="ik ik-trash-2"></i></a>
                                             </div>
                                         </td>

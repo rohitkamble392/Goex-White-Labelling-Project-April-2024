@@ -26,7 +26,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{url('dashboard-company')}}"><i class="ik ik-home"></i></a>
+                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="add-retailer">{{ __('Add Retailer')}}</a>

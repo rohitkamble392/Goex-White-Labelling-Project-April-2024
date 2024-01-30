@@ -17,7 +17,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{url('dashboard-company')}}"><i class="ik ik-home"></i></a>
+                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                         </ol>
                     </nav>
@@ -33,39 +33,34 @@
                     <form>
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Enter Name">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Name">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Enter Shop Name">
+                                    <input type="text" name="shop" class="form-control" placeholder="Enter Shop Name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Enter Mobile No">
+                                    <input type="number" name="mobile" class="form-control" placeholder="Enter Mobile No">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="email" class="form-control" placeholder="Enter Email Address">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                            <div class="col-sm-6">
-                                    <textarea type="text" class="form-control" placeholder="Enter Address"></textarea>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Enter PIN Code">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="District">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="State">
+                                    <input type="email" name="email" class="form-control" placeholder="Enter Email Address">
                                 </div>
                             </div>
                             <div class="form-group row">
                             <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Location">
+                                    <textarea type="text" name="address" class="form-control" placeholder="Enter Address"></textarea>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="number" name="pin" class="form-control" placeholder="Enter PIN Code">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <input type="text" name="district" class="form-control" placeholder="District">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" name="state" class="form-control" placeholder="State">
                                 </div>
                             </div>
                             <div class="card-header"><h3>{{ __('Super Stokist Policy Details')}}</h3></div>
