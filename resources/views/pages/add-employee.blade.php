@@ -28,81 +28,51 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"><h3>{{ __('Add Employee')}}</h3></div>
+                    {{-- <div class="card-header"><h3>{{ __('Add Employee')}}</h3></div> --}}
                     <div class="card-body">
-                    <form>
+                        <form class="forms-sample" method="POST" action="{{ route('create-employee') }}" >
+                            @csrf
                             <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Enter Employee Name">
+                                <div class="col-sm-4">
+                                    <label for="name">{{ __('Name')}}<span class="text-red">*</span></label>
+                                    <input type="text" name="name" class="form-control" placeholder="Employee Name">
                                 </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Enter Shop Name">
+                                <div class="col-sm-4">
+                                    <label for="mobileNo">{{ __('Mobile Number')}}<span class="text-red">*</span></label>
+                                    <input type="number" name="mobileNo" class="form-control" placeholder="Employee Mobile">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="email">{{ __('Email ID')}}<span class="text-red">*</span></label>
+                                    <input type="email" name="email" class="form-control" placeholder="Employee Email">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Enter Mobile No">
+                                <div class="col-sm-4">
+                                    <label for="password">{{ __('Password')}}<span class="text-red">*</span></label>
+                                    {{-- <input type="password" name="password" class="form-control" placeholder="Enter Password"> --}}
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter password" required>
+                                    <div class="help-block with-errors"></div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <input type="email" class="form-control" placeholder="Enter Email Address">
+                                <div class="col-sm-4">
+                                    <label for="address">{{ __('Address')}}<span class="text-red">*</span></label>
+                                    <textarea type="text" name="address" class="form-control" placeholder="Enter Address"></textarea>
                                 </div>
-                            </div>
+                                <div class="col-sm-4">
+                                    <label for="aadhar_number">{{ __('PIN Code')}}<span class="text-red">*</span></label>
+                                    <input type="number" name="aadhar_number" class="form-control" placeholder="Enter PIN Code">
+                                </div>
+                            </div> 
                             <div class="form-group row">
-                            <div class="col-sm-6">
-                                    <textarea type="text" class="form-control" placeholder="Enter Address : "></textarea>
+                                <div class="col-sm-4">
+                                    <label for="aadhar_number">{{ __('State')}}<span class="text-red">*</span></label>
+                                    <input type="number" name="aadhar_number" class="form-control" placeholder="Enter State">
                                 </div>
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Enter PIN Code">
+                                <div class="col-sm-4">
+                                    <label for="aadhar_number">{{ __('District')}}<span class="text-red">*</span></label>
+                                    <input type="text" name="aadhar_number" class="form-control" placeholder="Enter District">
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="District" readonly>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="State" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                            <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Location" readonly>
-                                </div>
-                            </div>
-                            <div class="card-header"><h3>{{ __('Employee Policy Details')}}</h3></div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Select Policy Type</option>
-                                        <option value="">Smart Policy</option>
-                                        <option value="">Regular Policy</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Total Policy">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Per Policy Rate">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Total Amount">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Paid Amount">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Unpaid Amount">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" placeholder="Requested Policy">
-                                </div>
-                            </div>
-                            <div class="card-header"><button type="button" class="btn btn-secondary">{{ __('Submit')}}</button></div>
+                            </div> 
+                            <div class="card-header"><button type="submit" class="btn btn-secondary">{{ __('Submit')}}</button></div>
                         </form>
                     </div>
                 </div>

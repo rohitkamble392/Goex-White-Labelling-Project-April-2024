@@ -35,7 +35,7 @@ class LoginController extends Controller
 
         if ($user->hasRole('Super Admin')) 
         {
-            return '/emm-dashboard';
+            return '/superadmin-dashboard';
         } 
         elseif ($user->hasRole('Company')) 
         {

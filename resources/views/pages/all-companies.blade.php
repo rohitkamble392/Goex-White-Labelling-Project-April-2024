@@ -28,66 +28,152 @@
                                 <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="add-company">{{ __('Add Company')}}</a>
+                                <a href="add-company">{{ __('Add Comapny')}}</a>
                             </li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
-    	<div class="row">
-            <div class="col-sm-12">
+
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card">
+                    {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
-                        <div class="dt-responsive">
-                            <table id="simpletable"
-                                   class="table table-striped table-bordered nowrap table-responsive text-center">
-                                <thead>
+                        <table id="data_table" class="table">
+                            <thead>
                                 <tr>
-                                    <th>{{ __('Company ID')}}</th>
-                                    <th>{{ __('Company Name')}}</th>
-                                    <th>{{ __('Shop Name')}}</th>
-                                    <th>{{ __('Mobile No')}}</th>
+                                    <th>{{ __('Id')}}</th>
+                                    <th>{{ __('Details')}}</th>
                                     <th>{{ __('Address')}}</th>
-                                    <th>{{ __('Policy Type')}}</th>
-                                    <th>{{ __('Per Policy Rate')}}</th>
-                                    <th>{{ __('Total Policy')}}</th>
-                                    <th>{{ __('Total Amount')}}</th>
-                                    <th>{{ __('Paid Amount')}}</th>
-                                    <th>{{ __('Unpaid Amount')}}</th>
-                                    <th>{{ __('Action')}}</th>
+                                    <th>{{ __('Details')}}</th>
+                                    <th class="nosort">{{ __('Action')}}</th>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ __('101')}}</td>
-                                        <td>{{ __('Vinod Wadkar')}}</td>
-                                        <td>{{ __('Sample Shop')}}</td>
-                                        <td>{{ __('8765432165')}}</td>
-                                        <td>{{ __('Vashi West')}}</td>
-                                        <td>{{ __('Smart Policy')}}</td>
-                                        <td>{{ __('200')}}</td>
-                                        <td>{{ __('200')}}</td>
-                                        <td>{{ __('40,000')}}</td>
-                                        <td>{{ __('15,000')}}</td>
-                                        <td>{{ __('25,000')}}</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="company-edit-superstokist"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                    </div>
+                            </thead>
+                            <tbody>
+                                @foreach ($companyDetails['Result'] as $company)
+                                <tr>
+                                    <td>{{ $company['CompanyID'] }}</td>
+                                    <td>
+                                        <p><b>Company Code : </b>{{ $company['CompanyID'] }}</p>
+                                        <p><b>Company Name : </b>{{ $company['Com_Name'] }}</p>
+                                        <p><b>Authorized Name : </b>{{ $company['Authorized_Name'] }}</p>
+                                        <p><b>Company Email : </b>{{ $company['Com_Email'] }}</p>
+                                        <p><b>Contact : </b>{{ $company['Com_MobileNo'] }}</p>
+                                        {{-- 'CompanyID' => $company['CompanyID'],
+                                        'Com_Name' => $company['Com_Name'],
+                                        'Com_Email' => $company['Com_Email'],
+                                        'Com_MobileNo' => $company['Com_MobileNo'],
+                                        'Type_Buss' => $company['Type_Buss'],
+                                        'User_id' => $company['User_id'],
+                                        'Com_Address' => $company['Com_Address'],
+                                        'IS_Active' => $company['IS_Active'],
+                                        'CreatedOn' => $company['CreatedOn'],
+                                        'Created_by' => $company['Created_by'],
+                                        'Authorized_Name' => $company['Authorized_Name'],
+                                        'Pincode' => $company['Pincode'],
+                                        'State' => $company['State'],
+                                        'District' => $company['District'],
+                                        'TypeofCom' => $company['TypeofCom'],
+                                        'GSTNO' => $company['GSTNO'],
+                                        'WebSiteURL' => $company['WebSiteURL'],
+                                        'UploadLogo' => $company['UploadLogo'],
+                                        'GST_URL' => $company['GST_URL'],
+                                        'COMPANNO' => $company['COMPANNO'],
+                                        'COMPANNO_URL' => $company['COMPANNO_URL'],
+                                        'AuthPANNO_URL' => $company['AuthPANNO_URL'],
+                                        'AuthPANNO' => $company['AuthPANNO'],
+                                        'CINNO' => $company['CINNO'],
+                                        'CINNO_URL' => $company['CINNO_URL'],
+                                        'SUBDOM1' => $company['SUBDOM1'],
+                                        'SUBDOM2' => $company['SUBDOM2'],
+                                        'SUBDOM3' => $company['SUBDOM3'],
+                                        'EnterPrise_ID' => $company['EnterPrise_ID'],
+                                        'OwnerID' => $company['OwnerID'],
+                                        'OwnerName' => $company['OwnerName'],
+                                        'Email' => $company['Email'],
+                                        'PhoneNumber' => $company['PhoneNumber'],
+                                        'PanNo' => $company['PanNo'],
+                                        'Nationality' => $company['Nationality'],
+                                        'Gender' => $company['Gender'],
+                                        'FileUploadURL' => $company['FileUploadURL'],
+                                        'PANNO_URL' => $company['PANNO_URL'],
+                                        'AADHARCard_URL' => $company['AADHARCard_URL'],
+                                        'AADHARCardNO' => $company['AADHARCardNO'] --}}
+                                    </td>
+                                    <td>
+                                        <p><b>Address : </b>{{ $company['Com_Address'] }}</p>
+                                        <p><b>Pin Code : </b>{{ $company['Pincode'] }}</p>
+                                        <p><b>State : </b>{{ $company['State'] }}</p>
+                                        <p><b>District : </b>{{ $company['District'] }}</p>
+                                    </td>
+                                    <td>
+                                        <p><b>Type of Company : </b>{{ $company['Type_Buss'] }}</p>
+                                        <p><b>Website : </b>{{ $company['WebSiteURL'] }}</p>
+                                        <p><b>GST No : </b>{{ $company['GST_URL'] }}</p>
+                                        <p><b>Enterprise ID : </b>{{ $company['EnterPrise_ID'] }}</p>
+                                    </td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#"><i class="ik ik-eye"></i></a>
+                                            <a href="#" class="editButton"><i class="ik ik-edit-2"></i></a>
+                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <!-- Language - Comma Decimal Place table end -->
-            </div>  
-    	</div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+        $(".deleteButton").on("click", function() {
+            var row = $(this).closest('tr');
+            var userId = row.find('td:eq(0)').text();
+            var companyId = row.find('td:eq(1)').text();
+            var statusId = row.find('td:eq(2)').text();
+            console.log(userId);
+            console.log(companyId);
+            // Show a confirmation dialog
+            if (confirm("Are you sure you want to delete the company with User ID " + userId + "?")) {
+            // User clicked OK, proceed with the deletion
+        
+            var requestData = {
+                "userID": userId,
+                "id": companyId,
+                "statusId": statusId
+            };
+        
+            // Make an AJAX call to the API
+            $.ajax({
+                url: '/delete-company/'+userId+'/'+userId, // Fix the URL to use companyId
+                type: 'GET',
+                contentType: 'application/json',
+                success: function(response) {
+                    // Handle success response
+                    console.log('Company deleted successfully:', response);
+                    // Remove the row from the table
+                    row.remove();
+                },
+                error: function(error) {
+                    // Handle error response
+                    console.error('Error deleting company:', error);
+                }
+            });
+            } else {
+            // User clicked Cancel, do nothing
+            console.log('Deletion canceled by user');
+            }
+        });
+        });
+        </script>
+    
 
     	<!-- push external js -->
         @push('script')

@@ -35,84 +35,94 @@
                 </div>
             </div>
         </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dt-responsive">
-                                <table id="simpletable"
-                                       class="table table-striped table-bordered nowrap table-responsive text-center">
-                                    <thead>
-                                    <tr>
-                                        <th>{{ __('Employee ID')}}</th>
-                                        <th>{{ __('Employee Name')}}</th>
-                                        <th>{{ __('Shop Name')}}</th>
-                                        <th>{{ __('Mobile No')}}</th>
-                                        <th>{{ __('Email')}}</th>
-                                        <th>{{ __('Address')}}</th>
-                                        <th>{{ __('Policy Type')}}</th>
-                                        <th>{{ __('Per Policy Rate')}}</th>
-                                        <th>{{ __('Total Policy')}}</th>
-                                        <th>{{ __('Total Amount')}}</th>
-                                        <th>{{ __('Paid Amount')}}</th>
-                                        <th>{{ __('Unpaid Amount')}}</th>
-                                        <th>{{ __('Action')}}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{{ __('101')}}</td>
-                                            <td>{{ __('Milind Bankar')}}</td>
-                                            <td>{{ __('Sample Shop')}}</td>
-                                            <td>{{ __('7564657687')}}</td>
-                                            <td>{{ __('sample@gmail.com')}}</td>
-                                            <td>{{ __('Vashi West')}}</td>
-                                            <td>{{ __('Smart Policy')}}</td>
-                                            <td>{{ __('250')}}</td>
-                                            <td>{{ __('250')}}</td>
-                                            <td>{{ __('62,500')}}</td>
-                                            <td>{{ __('20,000')}}</td>
-                                            <td>{{ __('42,500')}}</td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <a href="#"><i class="ik ik-eye"></i></a>
-                                                    <a href="distributor-edit-employee"><i class="ik ik-edit-2"></i></a>
-                                                    <a href="#"><i class="ik ik-trash-2"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('102')}}</td>
-                                            <td>{{ __('Milind Bankar')}}</td>
-                                            <td>{{ __('Sample Shop')}}</td>
-                                            <td>{{ __('7564657687')}}</td>
-                                            <td>{{ __('milind@gmail.com')}}</td>
-                                            <td>{{ __('Vashi West')}}</td>
-                                            <td>{{ __('Smart Policy')}}</td>
-                                            <td>{{ __('250')}}</td>
-                                            <td>{{ __('250')}}</td>
-                                            <td>{{ __('62,500')}}</td>
-                                            <td>{{ __('20,000')}}</td>
-                                            <td>{{ __('42,500')}}</td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <a href="#"><i class="ik ik-eye"></i></a>
-                                                    <a href="distributor-edit-employee"><i class="ik ik-edit-2"></i></a>
-                                                    <a href="#"><i class="ik ik-trash-2"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                        </div>
-                        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
+                    <div class="card-body">
+                        <table id="data_table" class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{ __('Id')}}</th>
+                                    <th>{{ __('Name')}}</th>
+                                    <th>{{ __('Mobile')}}</th>
+                                    <th>{{ __('Email')}}</th>
+                                    <th>{{ __('Address')}}</th>
+                                    <th class="nosort">{{ __('Action')}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($employeeDetails['Result'] as $employee)
+                                <tr>
+                                    <td>{{ $employee['ID'] }}</td>
+                                    <td>{{ $employee['Name'] }}</td>
+                                    <td>{{ $employee['MobileNo'] }}</td>
+                                    <td>{{ $employee['Email'] }}</td>
+                                    <td>{{ $employee['Address'] }}</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#"><i class="ik ik-eye"></i></a>
+                                            <a href="#"><i class="ik ik-edit-2"></i></a>
+                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- Language - Comma Decimal Place table end -->
-                </div>  
+                </div>
             </div>
         </div>
-        	<!-- push external js -->
-            @push('script')
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+        $(".deleteButton").on("click", function() {
+            var row = $(this).closest('tr');
+            var userId = row.find('td:eq(0)').text();
+            var companyId = row.find('td:eq(1)').text();
+            var statusId = row.find('td:eq(2)').text();
+            console.log(userId);
+            console.log(companyId);
+            // Show a confirmation dialog
+            if (confirm("Are you sure you want to delete the employee with User ID " + userId + "?")) {
+            // User clicked OK, proceed with the deletion
+        
+            var requestData = {
+                "userID": userId,
+                "id": companyId,
+                "statusId": statusId
+            };
+        
+            // Make an AJAX call to the API
+            $.ajax({
+                url: '/delete-employee/'+userId+'/'+userId, // Fix the URL to use companyId
+                type: 'GET',
+                contentType: 'application/json',
+                success: function(response) {
+                    // Handle success response
+                    console.log('Employee deleted successfully:', response);
+                    // Remove the row from the table
+                    row.remove();
+                },
+                error: function(error) {
+                    // Handle error response
+                    console.error('Error deleting employee:', error);
+                }
+            });
+            } else {
+            // User clicked Cancel, do nothing
+            console.log('Deletion canceled by user');
+            }
+        });
+        });
+        </script>
+
+    	<!-- push external js -->
+        @push('script')
         <script src="{{ asset('plugins/owl.carousel/dist/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('plugins/chartist/dist/chartist.min.js') }}"></script>
         <script src="{{ asset('plugins/flot-charts/jquery.flot.js') }}"></script>

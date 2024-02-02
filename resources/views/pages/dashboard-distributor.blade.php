@@ -71,7 +71,7 @@
                             <div class="col-8">
                                 <a href="policy-details" class="text-white">
                                     <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Policies')}}</p>
+                                    <p class="mb-0">{{ __('Keys')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">

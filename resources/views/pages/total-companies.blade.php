@@ -20,7 +20,7 @@
 
 
     <div class="container-fluid">
-    <div class="page-header">
+    <div class="page-header"> 
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">

@@ -20,7 +20,25 @@
                             <div class="col-8">
                                 <a href="all-customers" class="text-white">
                                     <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Total Customer')}}</p>
+                                    <p class="mb-0">{{ __('AMA Customer')}}</p>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                        {{-- <div id="Widget-line-chart1" class="chart-line chart-shadow"></div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-secondary text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <a href="ama-devices" class="text-white">
+                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
+                                    <p class="mb-0">{{ __('AMA Device')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">

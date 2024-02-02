@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="{{ asset('plugins/chartist/dist/chartist.min.css') }}">
     @endpush
 
-
     <div class="container-fluid">
         <div class="page-header">
             <div class="row align-items-end">
@@ -26,8 +25,11 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{url('dashboard-company')}}"><i class="ik ik-home"></i></a>
+                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
+                            {{-- <li class="breadcrumb-item">
+                                <a href="add-retailer">{{ __('Add Retailer')}}</a>
+                            </li> --}}
                         </ol>
                     </nav>
                 </div>
@@ -39,63 +41,77 @@
                     <div class="card-body">
                         <div class="dt-responsive">
                             <table id="simpletable"
-                                   class="table table-striped table-bordered nowrap table-responsive text-center">
+                                   class="table table-striped table-bordered nowrap table-responsive">
                                 <thead>
                                 <tr>
                                     <th>{{ __('Retailer ID')}}</th>
-                                    <th>{{ __('Retailer Name')}}</th>
-                                    <th>{{ __('Shop Name')}}</th>
-                                    <th>{{ __('Mobile No')}}</th>
-                                    <th>{{ __('Email')}}</th>
+                                    <th>{{ __('Details')}}</th>
+                                    <th>{{ __('Contact')}}</th>
                                     <th>{{ __('Address')}}</th>
-                                    <th>{{ __('Policy Type')}}</th>
-                                    <th>{{ __('Per Policy Rate')}}</th>
-                                    <th>{{ __('Total Policy')}}</th>
-                                    <th>{{ __('Total Amount')}}</th>
-                                    <th>{{ __('Paid Amount')}}</th>
-                                    <th>{{ __('Unpaid Amount')}}</th>
                                     <th>{{ __('Action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>{{ __('101')}}</td>
-                                        <td>{{ __('Milind Bankar')}}</td>
-                                        <td>{{ __('Sample Shop')}}</td>
-                                        <td>{{ __('7564657687')}}</td>
-                                        <td>{{ __('sample@gmail.com')}}</td>
-                                        <td>{{ __('Vashi West')}}</td>
-                                        <td>{{ __('Smart Policy')}}</td>
-                                        <td>{{ __('250')}}</td>
-                                        <td>{{ __('250')}}</td>
-                                        <td>{{ __('62,500')}}</td>
-                                        <td>{{ __('20,000')}}</td>
-                                        <td>{{ __('42,500')}}</td>
+                                        <td>
+                                            <p><b>Code : </b>{{ __('MH2467')}}</p>
+                                            <p><b>Name : </b>{{ __('Sample Shop')}}</p>
+                                            <p><b>Contact : </b>{{ __('Sample')}}</p>
+                                            <p><b>Display No : </b>{{ __('7654321876')}}</p>
+                                            <p><b>Display Name : </b>{{ __('Sample')}}</p>
+                                            <p><b>Payment No : </b>{{ __('12345')}}</p>
+                                        </td>
+                                        <td>
+                                            <p><b>Email ID : </b>{{ __('sample@gmail.com')}}</p>
+                                            <p><b>Phone : </b>{{ __('1234512345')}}</p>
+                                            <p><b>GST No : </b>{{ __('MHRE43434')}}</p>
+                                            <p><b>Aadhaar No : </b>{{ __('123876123765')}}</p>
+                                            <p><b>PAN Name : </b>{{ __('MFDF34344')}}</p>
+                                        </td>
+                                        <td>
+                                            <p><b>Address : </b>{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, officia.')}}</p>
+                                            <p><b>Pincode : </b>{{ __('654123')}}</p>
+                                            <p><b>Location : </b>{{ __('Sample[MH]')}}</p>
+                                            <p><b>State : </b>{{ __('Sample')}}</p>
+                                            <p><b>ZeroTouch : </b>{{ __('No')}}</p>
+                                        </td>
                                         <td>
                                             <div class="table-actions">
                                                 <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="distributor-edit-retailer"><i class="ik ik-edit-2"></i></a>
+                                                <a href="edit-retailer"><i class="ik ik-edit-2"></i></a>
                                                 <a href="#"><i class="ik ik-trash-2"></i></a>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>{{ __('102')}}</td>
-                                        <td>{{ __('Milind Bankar')}}</td>
-                                        <td>{{ __('Sample Shop')}}</td>
-                                        <td>{{ __('7564657687')}}</td>
-                                        <td>{{ __('milind@gmail.com')}}</td>
-                                        <td>{{ __('Vashi West')}}</td>
-                                        <td>{{ __('Smart Policy')}}</td>
-                                        <td>{{ __('250')}}</td>
-                                        <td>{{ __('250')}}</td>
-                                        <td>{{ __('62,500')}}</td>
-                                        <td>{{ __('20,000')}}</td>
-                                        <td>{{ __('42,500')}}</td>
+                                        <td>
+                                            <p><b>Code : </b>{{ __('MH2467')}}</p>
+                                            <p><b>Name : </b>{{ __('Sample Shop')}}</p>
+                                            <p><b>Contact : </b>{{ __('Sample')}}</p>
+                                            <p><b>Display No : </b>{{ __('7654321876')}}</p>
+                                            <p><b>Display Name : </b>{{ __('Sample')}}</p>
+                                            <p><b>Payment No : </b>{{ __('12345')}}</p>
+                                        </td>
+                                        <td>
+                                            <p><b>Email ID : </b>{{ __('sample@gmail.com')}}</p>
+                                            <p><b>Phone : </b>{{ __('1234512345')}}</p>
+                                            <p><b>GST No : </b>{{ __('MHRE43434')}}</p>
+                                            <p><b>Aadhaar No : </b>{{ __('123876123765')}}</p>
+                                            <p><b>PAN Name : </b>{{ __('MFDF34344')}}</p>
+                                        </td>
+                                        <td>
+                                            <p><b>Address : </b>{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, officia.')}}</p>
+                                            <p><b>Pincode : </b>{{ __('654123')}}</p>
+                                            <p><b>Location : </b>{{ __('Sample[MH]')}}</p>
+                                            <p><b>State : </b>{{ __('Sample')}}</p>
+                                            <p><b>ZeroTouch : </b>{{ __('No')}}</p>
+                                        </td>
                                         <td>
                                             <div class="table-actions">
                                                 <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="distributor-edit-retailer"><i class="ik ik-edit-2"></i></a>
+                                                <a href="edit-retailer"><i class="ik ik-edit-2"></i></a>
                                                 <a href="#"><i class="ik ik-trash-2"></i></a>
                                             </div>
                                         </td>
@@ -109,9 +125,6 @@
             </div>  
     	</div>
     </div>
-</div>
-
-
     	<!-- push external js -->
         @push('script')
         <script src="{{ asset('plugins/owl.carousel/dist/owl.carousel.min.js') }}"></script>

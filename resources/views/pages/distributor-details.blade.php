@@ -18,7 +18,7 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="all-distributor" class="text-white">
+                                <a href="all-distributors" class="text-white">
                                     <h4 class="mb-0">{{ __('3,612')}}</h4>
                                     <p class="mb-0">{{ __('Total Distributor')}}</p>
                                 </a>

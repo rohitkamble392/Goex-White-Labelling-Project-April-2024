@@ -17,24 +17,179 @@
     <div class="sidebar-content">
         <div class="nav-container">
             <nav id="main-menu-navigation" class="navigation-main">
+                {{-- SUPER ADMIN SIDE BAR START --}}
+                <div class="nav-lavel">{{ __('SUPER ADMIN')}} </div>
+
                 <div class="nav-item {{ ($segment1 == 'dashboard-superadmin') ? 'active' : '' }}">
-                    <a href="{{route('dashboard-superadmin')}}"><i class="ik ik-user"></i><span>{{ __('Super Admin Dashboard')}}</span></a>
+                    <a href="{{route('dashboard-superadmin')}}"><i class="ik ik-user"></i><span>{{ __('Dashboard')}}</span></a>
                 </div>
+
+                <div class="nav-item {{ ($segment1 == 'manage-user') ? 'active' : '' }}">
+                    <a href="{{url('manage-user')}}"><i class="ik ik-user"></i><span>{{ __('Manage Users')}}</span></a>
+                </div>
+                {{-- <div class="nav-item {{ ($segment1 == 'manage-users') ? 'active' : '' }}">
+                    <a href="{{url('manage-users')}}"><i class="ik ik-user"></i><span>{{ __('Users')}}</span></a>
+                </div> --}}
+
+                <div class="nav-item {{ ($segment1 == 'return-policy') ? 'active' : '' }}">
+                    <a href="{{url('return-policy')}}"><i class="ik ik-user"></i><span>{{ __('Key Pull Back')}}</span></a>
+                </div>
+                
+                <div class="nav-item {{ ($segment1 == 'company-details') ? 'active' : '' }}">
+                    <a href="{{route('company-details')}}"><i class="ik ik-user"></i><span>{{ __('Company')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'super-stokist-details') ? 'active' : '' }}">
+                    <a href="{{route('super-stokist-details')}}"><i class="ik ik-user"></i><span>{{ __('Super Stokist')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'distributor-details') ? 'active' : '' }}">
+                    <a href="{{route('distributor-details')}}"><i class="ik ik-user"></i><span>{{ __('Distributor')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'employee-details') ? 'active' : '' }}">
+                    <a href="{{route('employee-details')}}"><i class="ik ik-user"></i><span>{{ __('Employee')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'retailer-details') ? 'active' : '' }}">
+                    <a href="{{route('retailer-details')}}"><i class="ik ik-user"></i><span>{{ __('Retailer')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'register-customer') ? 'active' : '' }}">
+                    <a href="{{url('register-customer')}}"><i class="ik ik-user"></i><span>{{ __('Add Customer')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'assign-policy') ? 'active' : '' }}">
+                    <a href="{{url('assign-policy')}}"><i class="ik ik-user"></i><span>{{ __('Assign Key')}}</span></a>
+                </div>
+
+                {{-- <div class="nav-item {{ ($segment1 == 'updated-return-policy') ? 'active' : '' }}">
+                    <a href="{{url('updated-return-policy')}}"><i class="ik ik-user"></i><span>{{ __('Return Key')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'return-policy-report') ? 'active' : '' }}">
+                    <a href="{{url('return-policy-report')}}"><i class="ik ik-user"></i><span>{{ __('Return Key Report')}}</span></a>
+                </div> --}}
+
+                <div class="nav-item {{ ($segment1 == 'assign-policy-report') ? 'active' : '' }}">
+                    <a href="{{url('assign-policy-report')}}"><i class="ik ik-user"></i><span>{{ __('Retailer Report')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'manage-customers') ? 'active' : '' }}">
+                    <a href="{{url('manage-customers')}}"><i class="ik ik-user"></i><span>{{ __('Manage Customer')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'ama-devices') ? 'active' : '' }}">
+                    <a href="{{url('ama-devices')}}"><i class="ik ik-user"></i><span>{{ __('AMA Device')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'ama-customers') ? 'active' : '' }}">
+                    <a href="{{url('ama-customers')}}"><i class="ik ik-user"></i><span>{{ __('AMA Customer')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'ama-customers') ? 'active' : '' }}">
+                    <a href="{{url('#')}}"><i class="ik ik-user"></i><span>{{ __('Log Out')}}</span></a>
+                </div>
+
+                {{-- SUPER ADMIN SIDE BAR END --}}
+
+                {{-- COMPANY SIDE BAR START --}}
+
+                <div class="nav-lavel">{{ __('COMPANY')}} </div>
                 <div class="nav-item {{ ($segment1 == 'dashboard-company') ? 'active' : '' }}">
-                    <a href="{{route('dashboard-company')}}"><i class="ik ik-user"></i><span>{{ __('Company Dashboard')}}</span></a>
+                    <a href="{{route('dashboard-company')}}"><i class="ik ik-user"></i><span>{{ __('Dashboard')}}</span></a>
                 </div>
+
+                <div class="nav-item {{ ($segment1 == 'super-stokist-details') ? 'active' : '' }}">
+                    <a href="{{route('super-stokist-details')}}"><i class="ik ik-user"></i><span>{{ __('Super Stokist')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'distributor-details') ? 'active' : '' }}">
+                    <a href="{{route('distributor-details')}}"><i class="ik ik-user"></i><span>{{ __('Distributor')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'employee-details') ? 'active' : '' }}">
+                    <a href="{{route('employee-details')}}"><i class="ik ik-user"></i><span>{{ __('Employee')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'retailer-details') ? 'active' : '' }}">
+                    <a href="{{route('retailer-details')}}"><i class="ik ik-user"></i><span>{{ __('Retailer')}}</span></a>
+                </div>
+
+                {{-- COMPANY SIDE BAR END --}}
+
+                {{-- SUPER STOKIST SIDE BAR START --}}
+                
+                <div class="nav-lavel">{{ __('SUPER STOKIST')}} </div>
                 <div class="nav-item {{ ($segment1 == 'dashboard-superstokist') ? 'active' : '' }}">
-                    <a href="{{route('dashboard-superstokist')}}"><i class="ik ik-user"></i><span>{{ __('Super Stokist Dashboard')}}</span></a>
+                    <a href="{{route('dashboard-superstokist')}}"><i class="ik ik-user"></i><span>{{ __('Dashboard')}}</span></a>
                 </div>
+
+                <div class="nav-item {{ ($segment1 == 'distributor-details') ? 'active' : '' }}">
+                    <a href="{{route('distributor-details')}}"><i class="ik ik-user"></i><span>{{ __('Distributor')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'employee-details') ? 'active' : '' }}">
+                    <a href="{{route('employee-details')}}"><i class="ik ik-user"></i><span>{{ __('Employee')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'retailer-details') ? 'active' : '' }}">
+                    <a href="{{route('retailer-details')}}"><i class="ik ik-user"></i><span>{{ __('Retailer')}}</span></a>
+                </div>
+
+                {{-- SUPER STOKIST SIDE BAR END --}}
+
+                {{-- DISTRIBUTOR SIDE BAR START --}}
+
+                <div class="nav-lavel">{{ __('DISTRIBUTOR')}} </div>
                 <div class="nav-item {{ ($segment1 == 'dashboard-distributor') ? 'active' : '' }}">
-                    <a href="{{route('dashboard-distributor')}}"><i class="ik ik-user"></i><span>{{ __('Distributor Dashboard')}}</span></a>
+                    <a href="{{route('dashboard-distributor')}}"><i class="ik ik-user"></i><span>{{ __('Dashboard')}}</span></a>
                 </div>
+
+                <div class="nav-item {{ ($segment1 == 'employee-details') ? 'active' : '' }}">
+                    <a href="{{route('employee-details')}}"><i class="ik ik-user"></i><span>{{ __('Employee')}}</span></a>
+                </div>
+
+                <div class="nav-item {{ ($segment1 == 'retailer-details') ? 'active' : '' }}">
+                    <a href="{{route('retailer-details')}}"><i class="ik ik-user"></i><span>{{ __('Retailer')}}</span></a>
+                </div>
+
+                {{-- DISTRIBUTOR SIDE BAR END --}}
+
+                {{-- EMPLOYEE SIDE BAR START --}}
+                
+                <div class="nav-lavel">{{ __('EMPLOYEE')}} </div>
                 <div class="nav-item {{ ($segment1 == 'dashboard-employee') ? 'active' : '' }}">
-                    <a href="{{route('dashboard-employee')}}"><i class="ik ik-user"></i><span>{{ __('Employee Dashboard')}}</span></a>
+                    <a href="{{route('dashboard-employee')}}"><i class="ik ik-user"></i><span>{{ __('Dashboard')}}</span></a>
                 </div>
+
+                <div class="nav-item {{ ($segment1 == 'retailer-details') ? 'active' : '' }}">
+                    <a href="{{route('retailer-details')}}"><i class="ik ik-user"></i><span>{{ __('Retailer')}}</span></a>
+                </div>
+
+                {{-- EMPLOYEE SIDE BAR END --}}
+
+                {{-- RETAILER SIDE BAR START --}}
+                <div class="nav-lavel">{{ __('RETAILER')}} </div>
                 <div class="nav-item {{ ($segment1 == 'dashboard-retailer') ? 'active' : '' }}">
-                    <a href="{{route('dashboard-retailer')}}"><i class="ik ik-user"></i><span>{{ __('Retailer Dashboard')}}</span></a>
+                    <a href="{{route('dashboard-retailer')}}"><i class="ik ik-user"></i><span>{{ __('Dashboard')}}</span></a>
                 </div>
+
+                <div class="nav-item {{ ($segment1 == 'add-customer') ? 'active' : '' }}">
+                    <a href="{{route('add-customer')}}"><i class="ik ik-user"></i><span>{{ __('Add Customer')}}</span></a>
+                </div>
+                <div class="nav-item {{ ($segment1 == 'ama-devices') ? 'active' : '' }}">
+                    <a href="{{url('ama-devices')}}"><i class="ik ik-user"></i><span>{{ __('AMA Device')}}</span></a>
+                </div>
+                <div class="nav-item {{ ($segment1 == 'all-customers') ? 'active' : '' }}">
+                    <a href="{{url('all-customers')}}"><i class="ik ik-user"></i><span>{{ __('AMA Customer')}}</span></a>
+                </div>
+                <div class="nav-item {{ ($segment1 == 'policy-details') ? 'active' : '' }}">
+                    <a href="{{url('policy-details')}}"><i class="ik ik-user"></i><span>{{ __('Policy Details')}}</span></a>
+                </div>
+
+                {{-- RETAILER SIDE BAR END --}}
+
                 <div class="nav-lavel">{{ __('Layouts')}} </div>
                 <div class="nav-item {{ ($segment1 == 'pos') ? 'active' : '' }}">
                     <a href="{{url('inventory')}}"><i class="ik ik-shopping-cart"></i><span>{{ __('Inventory')}}</span> <span class=" badge badge-success badge-right">{{ __('New')}}</span></a>

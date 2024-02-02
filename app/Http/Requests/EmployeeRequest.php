@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Exceptions\ApiFailedException;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EmployeeRequest extends FormRequest
@@ -13,6 +11,10 @@ class EmployeeRequest extends FormRequest
      *
      * @return bool
      */
+    public function authorize()
+    {
+        return true;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,23 +24,14 @@ class EmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required | string ',
-            'email' => 'required | string ',
-            'mobile' => 'required | string ',
-            'department' => 'required | string ',
-            'device' => 'required | string ',
-            'imei1' => 'required | string ',
-            'imei2' => 'required | string ',
+            'name' => 'required | string',
+            'mobile' => 'required | string',
+            'email' => 'required | email | unique:users',
+            'password' => 'required',
+            'address' => 'required | string',
+            'pincode' => 'required | string',
+            'state' => 'required | string',
+            'district' => 'required | string',
         ];
-    }
-
-    /**
-     * Handle a failed validation attempt for API.
-     */
-    protected function failedValidation(Validator $validator)
-    {
-        if (request()->is('api/*')) {
-            throw new ApiFailedException($validator->errors());
-        }
     }
 }

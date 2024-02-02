@@ -10,8 +10,9 @@
         <link rel="stylesheet" href="{{ asset('plugins/chartist/dist/chartist.min.css') }}">
     @endpush
 
+
     <div class="container-fluid">
-    <div class="page-header">
+        <div class="page-header">
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
@@ -27,81 +28,121 @@
                             <li class="breadcrumb-item">
                                 <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item">
-                                <a href="add-customer">{{ __('Add Customer')}}</a>
-                            </li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
-    	<div class="row">
-            <div class="col-sm-12">
+
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card">
+                    {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
-                        <div class="dt-responsive">
-                            <table id="simpletable"
-                                   class="table table-striped table-bordered nowrap table-responsive text-center">
-                                <thead>
+                        <table id="data_table" class="table">
+                            <thead>
                                 <tr>
-                                    <th>{{ __('Distributor ID')}}</th>
-                                    <th>{{ __('Distributor Name')}}</th>
-                                    <th>{{ __('Mobile No')}}</th>
-                                    <th>{{ __('Email')}}</th>
-                                    <th>{{ __('Address')}}</th>
-                                    <th>{{ __('Pin Code')}}</th>
-                                    <th>{{ __('State')}}</th>
-                                    <th>{{ __('District')}}</th>
+                                    <th>{{ __('ID')}}</th>
+                                    <th>{{ __('Name')}}</th>
+                                    <th>{{ __('Device')}}</th>
+                                    <th>{{ __('IMEI')}}</th>
+                                    <th>{{ __('Status')}}</th>
                                     <th>{{ __('Action')}}</th>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ __('101')}}</td>
-                                        <td>{{ __('Sample')}}</td>
-                                        <td>{{ __('7685943423')}}</td>
-                                        <td>{{ __('sample@gmail.com')}}</td>
-                                        <td>{{ __('Vashi West')}}</td>
-                                        <td>{{ __('400021')}}</td>
-                                        <td>{{ __('Maharashtra')}}</td>
-                                        <td>{{ __('Ratnagiri')}}</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="superstokist-edit-distributor"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ __('102')}}</td>
-                                        <td>{{ __('Sample')}}</td>
-                                        <td>{{ __('7685943423')}}</td>
-                                        <td>{{ __('sample@gmail.com')}}</td>
-                                        <td>{{ __('Vashi West')}}</td>
-                                        <td>{{ __('400021')}}</td>
-                                        <td>{{ __('Maharashtra')}}</td>
-                                        <td>{{ __('Ratnagiri')}}</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="#"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                            </thead>
+                            <tbody>
+                                
+
+                                @foreach ($customerDetails['Result'] as $customer)
+                                <tr>
+                                    <td><b>{{ $customer['CustID'] }}</b></td>
+                                    <td>
+                                        <p><b>{{ $customer['Cust_Name'] }}</b></p>
+                                        <p><b>Name : </b>{{ $customer['Cust_Name'] }}</p>
+                                        <p><b>Mobile No : </b>{{ $customer['Cust_MobileNo'] }}</p>
+                                        <p><b>Email ID : </b>{{ $customer['Cust_Email'] }}</p>
+                                        <p><b>Policy : </b>{{ $customer['Policy_Type'] }}</p>
+                                    </td>
+                                    <td>
+                                        <p><b>Financiar : </b>{{ $customer['Finaciar_id'] }}</p>
+                                        <p><b>Device ID : </b>{{ $customer['Device_ID'] }}</p>
+                                        <p><b>EMI Date : </b>{{ $customer['EMI_Date'] }}</p>
+                                    </td>
+                                    <td>
+                                        <p><b>IMEI 1 : </b>{{ $customer['IMENumber'] }}</p>
+                                        <p><b>IMEI 2 : </b>{{ $customer['IMENumber1'] }}</p>
+                                        <p><b>Serial Number : </b>{{ $customer['Serial_No'] }}</p>
+                                        <p><b>SL : </b>{{ $customer['Serial_No'] }}</p>
+                                        <p><b>SIM 1 : </b></p>
+                                        <p><b>SIM 2 : </b></p>
+                                    </td>
+                                    <td>
+                                        <p><b>Model : </b>{{ $customer['Model'] }}</p>
+                                        <p><b>Brand : </b>{{ $customer['Brand'] }}</p>
+                                        <p><b>Created On : </b></p>
+                                    </td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#"><i class="ik ik-eye"></i></a>
+                                            <a href="#"><i class="ik ik-edit-2"></i></a>
+                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <!-- Language - Comma Decimal Place table end -->
-            </div>  
-    	</div>
+            </div>
+        </div>
     </div>
 
-        	<!-- push external js -->
-            @push('script')
+    <script>
+        $(document).ready(function() {
+        $(".deleteButton").on("click", function() {
+            var row = $(this).closest('tr');
+            var userId = row.find('td:eq(0)').text();
+            var companyId = row.find('td:eq(1)').text();
+            var statusId = row.find('td:eq(2)').text();
+            console.log(userId);
+            console.log(companyId);
+            // Show a confirmation dialog
+            if (confirm("Are you sure you want to delete the customer with User ID " + userId + "?")) {
+            // User clicked OK, proceed with the deletion
+        
+            var requestData = {
+                "userID": userId,
+                "id": companyId,
+                "statusId": statusId
+            };
+        
+            // Make an AJAX call to the API
+            $.ajax({
+                url: '/delete-customer/'+userId+'/'+userId, // Fix the URL to use companyId
+                type: 'GET',
+                contentType: 'application/json',
+                success: function(response) {
+                    // Handle success response
+                    console.log('Customer deleted successfully:', response);
+                    // Remove the row from the table
+                    row.remove();
+                },
+                error: function(error) {
+                    // Handle error response
+                    console.error('Error deleting customer:', error);
+                }
+            });
+            } else {
+            // User clicked Cancel, do nothing
+            console.log('Deletion canceled by user');
+            }
+        });
+        });
+        </script>
+
+    	<!-- push external js -->
+        @push('script')
         <script src="{{ asset('plugins/owl.carousel/dist/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('plugins/chartist/dist/chartist.min.js') }}"></script>
         <script src="{{ asset('plugins/flot-charts/jquery.flot.js') }}"></script>

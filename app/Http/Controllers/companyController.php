@@ -2,232 +2,124 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
-use App\Models\User;
-use Auth;
-use DataTables;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\View\View;
-use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Http;
 
-class CompanyController extends Controller
+class companyController extends Controller
 {
-
-    /**
-     * Show the users dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index(): View
+    public function index()
     {
-        $user = Auth::user();
-        $id = $user->id;
-        $departmentCounts = Employee::select('company_id', 'department')
-    ->groupBy('company_id', 'department')
-    ->selectRaw('company_id, department, count(*) as department_count')
-    ->get();
-        $data = Department::get()->where('company_id',$id);
-        return view('users');
+        // return view('pages.add-company');
+
+        $apiEndpoint = 'http://api.spillas.in/api/UserRegistration/GetCompanyDetails';
+
+        // Make a GET request to the API
+        $response = Http::get($apiEndpoint);
+
+        // Check if the request was successful
+        if ($response->successful()) {
+            $companyDetails = $response->json();
+
+            // Return the data to the view
+            return view('pages.all-companies', compact('companyDetails'));
+        } else {
+            // Handle error response
+            return response()->json(['error' => 'Failed to fetch data'], $response->status());
+        }
     }
 
-    /**
-     * Show User List
-     *
-     * @param Request $request
-     * @return mixed
-     */
-
-     public function getcompanylist(Request $request): mixed
+    public function createCompany(Request $request)
     {
-        // Get users with the role 'company'
-        $data = User::role('Company')->get();
+        $data = [
+            'com_Name' => $request->input('com_Name'),
+            'com_Email' => $request->input('com_Email'),
+            'com_MobileNo' => $request->input('com_MobileNo'),
+            'password' => $request->input('password'),
+            'type_Buss' => $request->input('type_Buss'),
+            'com_Address' => $request->input('com_Address'),
+            'createdBy' => 1,
+            'ownerName' => $request->input('ownerName'),
+            'email' => $request->input('email'),
+            'phoneNumber' => $request->input('phoneNumber'),
+            'panNo' => $request->input('panNo'),
+            'nationality' => $request->input('nationality'),
+            'gender' => $request->input('gender'),
+            'role' => 2,
+            'fileUploadURL' => $request->input('fileUploadURL'),
+            'autoziedName' => $request->input('autoziedName'),
+            'pincode' => $request->input('pincode'),
+            'state' => $request->input('state'),
+            'district' => $request->input('district'),
+            'typeofCom' => $request->input('typeofCom'),
+            'gstno' => $request->input('gstno'),
+            'webSiteURL' => $request->input('webSiteURL'),
+            'uploadLogo' => $request->input('uploadLogo'),
+            'gsT_URL' => $request->input('gsT_URL'),
+            'companno' => $request->input('companno'),
+            'compannO_URL' => $request->input('compannO_URL'),
+            'authPANNO_URL' => $request->input('authPANNO_URL'),
+            'authPANNO' => $request->input('authPANNO'),
+            'cinno' => $request->input('cinno'),
+            'cinnO_URL' => $request->input('cinnO_URL'),
+            'subdoM1' => $request->input('subdoM1'),
+            'subdoM2' => $request->input('subdoM2'),
+            'subdoM3' => $request->input('subdoM3'),
+            'enterPrise_ID' => $request->input('enterPrise_ID'),
+            'pannO_URL' => $request->input('pannO_URL'),
+            'aadharCard_URL' => $request->input('aadharCard_URL'),
+            'aadharCardNO' => $request->input('aadharCardNO'),
+            'companyDomain' => 'www.abc.com',
+            'companytoken' => 'jfkdls94854jfkdsf',
+        ];
+
+        // Prepare the data for the POST request
+        // $data = $request->all();
+
+        // Make the POST request to the API
+        $response = Http::post('http://api.spillas.in/api/UserRegistration/CreateCompany', $data);
+
+        // Check the response and handle it accordingly
+        if ($response->successful()) {
+            $responseData = $response->json();
+            // Process the response data as needed
+            // return response()->json(['message' => 'Company created successfully', 'data' => $responseData], 201);
+            return redirect()->back()->with('success', 'Operation completed successfully!');
         
-        
-        $hasManageUser = Auth::user()->can('manage_user');
-    
-        return Datatables::of($data)
-           
-           
-            ->addColumn('action', function ($data) use ($hasManageUser) {
-                $output = '';
-                if ($data->name == 'Super Admin') {
-                    return '';
-                }
-                if ($hasManageUser) {
-                    
-                    $output = '<div class="table-actions">
-                    <a href="#" onclick="confirmDelete(' . $data->id . ')" class="btn btn-danger text-white">
-                        <i class="ik ik-trash-2 f-16 text-white" style="font-size:12px;"></i>Remove
-                    </a>
-                    <a href="' . url('company/' . $data->id) . '" class="btn btn-success text-white">Edit</a>
-                </div>';
-                }
-    
-                return $output;
-            })
-            ->make(true);
-    }
-
-    /**
-     * User Create
-     *
-     * @return mixed
-     */
-    public function create(): mixed
-    {
-        try {
-            $roles = Role::pluck('name', 'id');
-
-            return view('create-user', compact('roles'));
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+        } else {
+            // Handle the error
+            return $response->json();
         }
     }
 
-    /**
-     * Store User
-     *
-     * @param UserRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(UserRequest $request): RedirectResponse
+    public function edit(Request $request, $company)
     {
-        try {
-            // store user information
-            $user = User::create([
-                'name' => $request->name,
-                'description' => $request->description,
-                'email' => $request->email,
-                'password' => $request->password,
-                'mobile' => $request->mobile,
-                'gst' => $request->gst,
-                'address' => $request->address,
-                'pincode' => $request->pin,
-                'state' => $request->state,
-                'district' => $request->district,
-            ]);
-
-
-            if ($user) {
-                // assign new role to the user
-                $user->syncRoles(5);
-
-                return redirect('total-companies')->with('success', 'New Company created!');
-            }
-
-            return redirect('users')->with('error', 'Failed to create new Company! Try again.');
-        } catch (\Exception $e) {
-            $bug = $e->getMessage();
-
-            // return redirect()->back()->with('error', $bug);
-            echo $bug;
-        }
+        return $request;
+     //   return view('pages.edit-company',compact('company'));
     }
 
-    /**
-     * Edit User
-     *
-     * @param int $id
-     * @return mixed
-     */
-    public function edit($id): mixed
+    public function delete($userid,$id)
     {
-        try {
-            $user = User::with('roles', 'permissions')->find($id);
+        $data = [
+            'userID' => $userid,
+            'id' => $id,
+            'statusId' => 0
+        ];
 
-            if ($user) {
-                return view('pages.emm-edit-user', compact('user'));
-            }
+        // Prepare the data for the POST request
+        // $data = $request->all();
 
-            return redirect('404');
-        } catch (\Exception $e) {
-            $bug = $e->getMessage();
+        // Make the POST request to the API
+        $response = Http::post('http://api.spillas.in/api/UserRegistration/DeleteCompany', $data);
 
-            // return redirect()->back()->with('error', $bug);
-            echo $bug;
+        // Check the response and handle it accordingly
+        if ($response->successful()) {
+            $responseData = $response->json();
+            // Process the response data as needed
+            // return response()->json(['message' => 'Company deleted successfully', 'data' => $responseData], 201);
+            return redirect('/manage-company')->with('success', 'Operation completed successfully!');
+        } else {
+            // Handle the error
+            return $response->json();
         }
-    }
-
-    /**
-     * Update User
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request): RedirectResponse
-    {
-        // update user info
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'name' => 'required | string ',
-            'email' => 'required | email',
-            'description' => 'required | string',
-            'mobile' => 'required | string',
-            'gst' => 'required | string',
-            'address' => 'required | string',
-            'pincode' => 'required | string',
-            'state' => 'required | string',
-            'district' => 'required | string',
-        ]);
-
-        // check validation for password match
-        if (isset($request->password)) {
-            $validator = Validator::make($request->all(), [
-                'password' => 'required | confirmed',
-            ]);
-        }
-
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->with('error', $validator->messages()->first());
-        }
-
-        try {
-            if ($user = User::find($request->id)) {
-                $payload = [
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'description' => $request->description,
-                    'mobile' => $request->mobile,
-                    'gst' => $request->gst,
-                    'address' => $request->address,
-                    'pincode' => $request->pincode,
-                    'state' => $request->state,
-                    'district' => $request->district,
-                ];
-                // update password if user input a new password
-                if (isset($request->password) && $request->password) {
-                    $payload['password'] = $request->password;
-                }
-
-                $update = $user->update($payload);
-
-                return redirect('total-companies')->with('success', 'Company Updated!');
-            }
-
-            return redirect()->back()->with('error', 'Failed to update user! Try again.');
-        } catch (\Exception $e) {
-            $bug = $e->getMessage();
-
-            return redirect()->back()->with('error', $bug);
-        }
-    }
-
-    /**
-     * Delete User
-     *
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function delete($id): RedirectResponse
-    {
-        if ($user = User::find($id)) {
-            $user->delete();
-
-            return redirect('total-companies')->with('success', 'User removed!');
-        }
-
-        return redirect('users')->with('error', 'User not found');
     }
 }

@@ -28,66 +28,97 @@
                                 <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="add-superstokist">{{ __('Add Supe Stokist')}}</a>
+                                <a href="add-superstokist">{{ __('Add Super Stokist')}}</a>
                             </li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
-    	<div class="row">
-            <div class="col-sm-12">
+
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card">
+                    {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
-                        <div class="dt-responsive">
-                            <table id="simpletable"
-                                   class="table table-striped table-bordered nowrap table-responsive text-center">
-                                <thead>
+                        <table id="data_table" class="table">
+                            <thead>
                                 <tr>
-                                    <th>{{ __('Super Stokist ID')}}</th>
-                                    <th>{{ __('Super Stokist Name')}}</th>
-                                    <th>{{ __('Shop Name')}}</th>
-                                    <th>{{ __('Mobile No')}}</th>
+                                    <th>{{ __('Id')}}</th>
+                                    <th>{{ __('Name')}}</th>
+                                    <th>{{ __('Mobile')}}</th>
+                                    <th>{{ __('Email')}}</th>
                                     <th>{{ __('Address')}}</th>
-                                    <th>{{ __('Policy Type')}}</th>
-                                    <th>{{ __('Per Policy Rate')}}</th>
-                                    <th>{{ __('Total Policy')}}</th>
-                                    <th>{{ __('Total Amount')}}</th>
-                                    <th>{{ __('Paid Amount')}}</th>
-                                    <th>{{ __('Unpaid Amount')}}</th>
-                                    <th>{{ __('Action')}}</th>
+                                    <th class="nosort">{{ __('Action')}}</th>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ __('101')}}</td>
-                                        <td>{{ __('Vinod Wadkar')}}</td>
-                                        <td>{{ __('Sample Shop')}}</td>
-                                        <td>{{ __('8765432165')}}</td>
-                                        <td>{{ __('Vashi West')}}</td>
-                                        <td>{{ __('Smart Policy')}}</td>
-                                        <td>{{ __('200')}}</td>
-                                        <td>{{ __('200')}}</td>
-                                        <td>{{ __('40,000')}}</td>
-                                        <td>{{ __('15,000')}}</td>
-                                        <td>{{ __('25,000')}}</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="company-edit-superstokist"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                    </div>
+                            </thead>
+                            <tbody>
+                                @foreach ($superstokistDetails['Result'] as $superstockist)
+                                <tr>
+                                    <td>{{ $superstockist['ID'] }}</td>
+                                    <td>{{ $superstockist['Name'] }}</td>
+                                    <td>{{ $superstockist['MobileNo'] }}</td>
+                                    <td>{{ $superstockist['Email'] }}</td>
+                                    <td>{{ $superstockist['Address'] }}</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#"><i class="ik ik-eye"></i></a>
+                                            <a href="#"><i class="ik ik-edit-2"></i></a>
+                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <!-- Language - Comma Decimal Place table end -->
-            </div>  
-    	</div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+        $(".deleteButton").on("click", function() {
+            var row = $(this).closest('tr');
+            var userId = row.find('td:eq(0)').text();
+            var companyId = row.find('td:eq(1)').text();
+            var statusId = row.find('td:eq(2)').text();
+            console.log(userId);
+            console.log(companyId);
+            // Show a confirmation dialog
+            if (confirm("Are you sure you want to delete the super stokist with User ID " + userId + "?")) {
+            // User clicked OK, proceed with the deletion
+        
+            var requestData = {
+                "userID": userId,
+                "id": companyId,
+                "statusId": statusId
+            };
+        
+            // Make an AJAX call to the API
+            $.ajax({
+                url: '/delete-superstokist/'+userId+'/'+userId, // Fix the URL to use companyId
+                type: 'GET',
+                contentType: 'application/json',
+                success: function(response) {
+                    // Handle success response
+                    console.log('SuperStokist deleted successfully:', response);
+                    // Remove the row from the table
+                    row.remove();
+                },
+                error: function(error) {
+                    // Handle error response
+                    console.error('Error deleting distributor:', error);
+                }
+            });
+            } else {
+            // User clicked Cancel, do nothing
+            console.log('Deletion canceled by user');
+            }
+        });
+        });
+        </script>
 
     	<!-- push external js -->
         @push('script')

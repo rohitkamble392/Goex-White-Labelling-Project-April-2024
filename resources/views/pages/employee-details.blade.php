@@ -84,7 +84,6 @@
             <!-- page statustic chart end -->  
     	</div>
     </div>
-
     	<!-- push external js -->
         @push('script')
         <script src="{{ asset('plugins/owl.carousel/dist/owl.carousel.min.js') }}"></script>

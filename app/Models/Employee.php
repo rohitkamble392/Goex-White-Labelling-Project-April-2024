@@ -2,17 +2,59 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class Employee extends Model
+class Retailer extends Authenticatable
 {
-    use HasFactory;
-
+    use HasApiTokens;
+    use Notifiable;
     use HasRoles;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    // HERE WE ADD HE COLUMNS FOR TABLE
     protected $fillable = [
-        'company_id','department_id','name','email','mobile','department','device','imei1','imei2'
+        'name','mobile','email','address','pincode','state','district'
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
+
+
+    public function get_roles()
+    {
+        $roles = [];
+        foreach ($this->getRoleNames() as $key => $role) {
+            $roles[$key] = $role;
+        }
+
+        return $roles;
+    }
 }

@@ -18,9 +18,9 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <a href="#" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Total Policies')}}</p>
+                                <a href="return-policy-type" class="text-white">
+                                    <h4 class="mb-0">{{ __('1,500')}}</h4>
+                                    <p class="mb-0">{{ __('Total Keys')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">
@@ -37,8 +37,8 @@
                         <div class="row align-items-center">
                             <div class="col-8">
                                 <a href="#" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Assigned Policies')}}</p>
+                                    <h4 class="mb-0">{{ __('500')}}</h4>
+                                    <p class="mb-0">{{ __('Assigned Keys')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">
@@ -55,8 +55,8 @@
                         <div class="row align-items-center">
                             <div class="col-8">
                                 <a href="#" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Remaining Policies')}}</p>
+                                    <h4 class="mb-0">{{ __('1,000')}}</h4>
+                                    <p class="mb-0">{{ __('Remaining Keys')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">
@@ -73,8 +73,44 @@
                         <div class="row align-items-center">
                             <div class="col-8">
                                 <a href="request-keys" class="text-white">
+                                    <h4 class="mb-0">{{ __('2,500')}}</h4>
+                                    <p class="mb-0">{{ __('Request Keys')}}</p>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                        {{-- <div id="Widget-line-chart4" class="chart-line chart-shadow"></div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-secondary text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <a href="requested-keys" class="text-white">
                                     <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Requested Policies')}}</p>
+                                    <p class="mb-0">{{ __('Requested Keys')}}</p>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="ik ik-user f-30"></i>
+                            </div>
+                        </div>
+                        {{-- <div id="Widget-line-chart4" class="chart-line chart-shadow"></div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-secondary text-white">
+                    <div class="card-block">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <a href="return-policy-type" class="text-white">
+                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
+                                    <p class="mb-0">{{ __('Return Keys')}}</p>
                                 </a>
                             </div>
                             <div class="col-4 text-right">
@@ -87,6 +123,7 @@
             </div>
             <!-- page statustic chart end -->  
     	</div>
+        
     </div>
 
     	<!-- push external js -->
