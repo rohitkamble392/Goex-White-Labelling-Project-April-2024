@@ -27,7 +27,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
                     {{-- <div class="card-header"><h3>{{ __('Add Retailer')}}</h3></div> --}}
                     <div class="card-body">
@@ -117,42 +117,28 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="card">
                     {{-- <div class="card-header"><h3>{{ __('Add Retailer')}}</h3></div> --}}
                     <div class="card-body">
-                        <h5>Apply Policies</h5>
                         <form class="forms-sample" method="POST" action="{{ route('add-retailer') }}" >
                             @csrf
                             <div class="form-group row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <label for="upi_number">{{ __('Select Policy')}}<span class="text-red">*</span></label>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Select Policy</option>
-                                        <option value="">default</option>
-                                        <option value="">hardlock</option>
-                                        <option value="">softlock</option>
-                                        <option value="">unlock</option>
-                                        <option value="">unistall</option>
-                                        <option value="">usbenable</option>
-                                        <option value="">lockscreenmsg</option>
+                                    <select name="policyname" id="policyname" class="form-control">
+                                        {{-- @foreach($policyname['Result'] as policy)
+                                            <option value="{{$policy['ID']}}">{{$policy['Policy_Name']}}</option>
+                                        @endforeach --}}
+                                        @foreach($policyname['Result'] as $policy)
+                                        <option value="{{$policy['Policyid']}}">{{$policy['Policy_Name']}}</option>
+                                    @endforeach
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
+                                    <br>
                                     <label for="mobile_number">{{ __('Remark')}}<span class="text-red">*</span></label>
                                     <textarea type="number" name="mobile_number" class="form-control" placeholder="Enter Brand"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <label for="upi_number">{{ __('Current LS Status')}}<span class="text-red">*</span></label>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Select Value</option>
-                                        <option value="">Claim</option>
-                                        <option value="">Unclaim</option>
-                                    </select>
                                 </div>
                             </div>
                             <div class="card-header"><button type="submit" class="btn btn-secondary">{{ __('Submit')}}</button></div>
@@ -160,6 +146,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+
         </div>
     </div>
 

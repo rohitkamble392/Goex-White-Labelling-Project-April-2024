@@ -17,7 +17,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Retailer Report')}}</h5>
+                            <h5><b>{{ __('RETAILER REPORT')}}</b></h5>
                         </div>
                     </div>
                 </div>
@@ -27,9 +27,9 @@
                             <li class="breadcrumb-item">
                                 <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item">
+                            {{-- <li class="breadcrumb-item">
                                 <a href="add-retailer">{{ __('Add Retailer')}}</a>
-                            </li>
+                            </li> --}}
                         </ol>
                     </nav>
                 </div>
@@ -41,19 +41,19 @@
                 <div class="card">
                     {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
-                        <table id="data_table" class="table">
-                            <thead>
+                        <table id="data_table" class="table table-striped table-hover">
+                            <thead class="bg-secondary">
                                 <tr>
-                                    <th>{{ __('Id')}}</th>
-                                    <th>{{ __('Name')}}</th>
-                                    <th>{{ __('Key Details')}}</th>
-                                    <th>{{ __('Payment Details')}}</th>
-                                    <th class="nosort">{{ __('Action')}}</th>
+                                    <th class="text-white">{{ __('Id')}}</th>
+                                    <th class="text-white">{{ __('Name')}}</th>
+                                    <th class="text-white">{{ __('Key Details')}}</th>
+                                    <th class="text-white">{{ __('Payment Details')}}</th>
+                                    <th class="nosort text-white">{{ __('Action')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{{ __('101')}}</td>
+                                    <td><b>{{ __('101')}}</b></td>
                                     <td>{{ __('Erich Heaney')}}</td>
                                     <td>
                                         <p><b>Key Type : </b>{{ __('Smart Key')}}</p>
@@ -68,33 +68,10 @@
                                         <p><b>Remainng Amount : </b>{{ __('20000')}}</p>
                                     </td>
                                     <td>
-                                        <div class="table-actions">
-                                            <a href="#"><i class="ik ik-eye"></i></a>
-                                            <a href="#"><i class="ik ik-edit-2"></i></a>
-                                            <a href="#"><i class="ik ik-trash-2"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>{{ __('102')}}</td>
-                                    <td>{{ __('Erich Heaney')}}</td>
-                                    <td>
-                                        <p><b>Key Type : </b>{{ __('Smart Key')}}</p>
-                                        <p><b>Total Keys : </b>{{ __('200')}}</p>
-                                        <p><b>Used Keys : </b>{{ __('100')}}</p>
-                                        <p><b>Remaining Keys : </b>{{ __('100')}}</p>
-                                    </td>
-                                    <td>
-                                        <p><b>Per Policy : </b>{{ __('300')}}</p>
-                                        <p><b>Total Amount : </b>{{ __('30000')}}</p>
-                                        <p><b>Paid Amount : </b>{{ __('10000')}}</p>
-                                        <p><b>Remainng Amount</b>{{ __('20000')}}</p>
-                                    </td>
-                                    <td>
-                                        <div class="table-actions">
-                                            <a href="#"><i class="ik ik-eye"></i></a>
-                                            <a href="#"><i class="ik ik-edit-2"></i></a>
-                                            <a href="#"><i class="ik ik-trash-2"></i></a>
+                                        <div class="table-actions text-center">
+                                            <a href="#"><i class="ik ik-eye text-dark"></i></a>
+                                            <a href="#"><i class="ik ik-edit-2 text-dark"></i></a>
+                                            <a href="#"><i class="ik ik-trash-2 text-dark"></i></a>
                                         </div>
                                     </td>
                                 </tr>

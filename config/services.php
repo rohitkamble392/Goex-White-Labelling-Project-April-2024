@@ -29,5 +29,12 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    'api' => [
+        'bearer_token' => env('BEARER_TOKEN'),
+        'api_domain' => env('API_DOMAIN'),
+        'company_token' => env('COMPANY_TOKEN'),
+        'role_company' => env('ROLE_COMPANY'),
+    ],
 
 ];

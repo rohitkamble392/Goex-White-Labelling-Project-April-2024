@@ -4,18 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Session;
 
 class myroleController extends Controller
 {
     public function index()
     {
 
-        $apiEndpoint = 'http://api.spillas.in/api/UserRegistration/GetRoleDetails';
+        $data = [
+            'userID' => 1,
+        ];
+
+        $apiEndpoint = 'https://spillas.in/api/UserRegistration/GetRoleDetails';
 
         // Make a GET request to the API
-        $response = Http::post($apiEndpoint, [
-            'userID' => 1,
-        ]);
+        $bearerToken = config('services.api.bearer_token');
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $bearerToken,
+            'Accept' => '*/*'
+        ])->post($apiEndpoint,$data);
 
         // Check if the request was successful
         if ($response->successful()) {
@@ -31,16 +39,23 @@ class myroleController extends Controller
 
     public function createrole(Request $request)
     {
-$apiEndpoint = 'http://api.spillas.in/api/UserRegistration/CreateRole';
 
+        $data = [
+            'roleID' => 1,
+            'roleName' => $request->input('roleName'),
+            'reporting_TO' => $request->input('reporting_to'),
+            'isActive' => $request->input('isActive'),
+            'createdBy' => $request->input('createdBy'),
+        ];
+        
+        $apiEndpoint = 'https://spillas.in/api/UserRegistration/CreateRole';
 
-$response = Http::post($apiEndpoint, [
-    'roleID' => 1,
-    'roleName' => $request->input('roleName'),
-    'reporting_TO' => $request->input('reporting_to'),
-    'isActive' => $request->input('isActive'),
-    'createdBy' => $request->input('createdBy'),
-]);
+        $bearerToken = config('services.api.bearer_token');
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $bearerToken,
+            'Accept' => '*/*'
+        ])->post($apiEndpoint,$data);
 
 // Check the response status and handle accordingly
 if ($response->successful()) {
@@ -51,7 +66,8 @@ if ($response->successful()) {
     if ($responseData['IsSuccess']) {
         $message = $responseData['Message'];
         // Process the success message as needed
-        echo $message;
+        return redirect('/manage-role')->with('success', 'Operation completed successfully!');
+        // echo $message;
     } else {
         // Handle the case where the API request was successful, but the response indicates an error
         $errorMessage = $responseData['Message'];

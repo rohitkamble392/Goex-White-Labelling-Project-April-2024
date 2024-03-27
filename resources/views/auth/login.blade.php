@@ -3,7 +3,7 @@
     <head> 
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Login | Laravel Admin Starter Kit - Radmin</title>
+        <title>Goelectronix</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,28 +33,28 @@
                     <div class="col-xl-4 col-lg-4 col-md-4 m-auto">
                         <div class="authentication-form mx-auto">
                             <div class="logo-centered">
-                                <a href="http://radmin.rakibhstu.com"><img height="40" src="{{ asset('img/logo.png') }}" alt="RADMIN" ></a>
+                                <a href="#"><img style="border-radius: 40px" height="130" width="180" src="{{ asset('img/logo1.jpg') }}" alt="Goelectronix" ></a>
                             </div>
                             <p>Welcome back! </p>
                             <form method="POST" action="{{ route('login') }}">
-                            @csrf
+                                @csrf
                                 <div class="form-group">
-                                    <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="admin@test.com" required autocomplete="email" autofocus>
+                                    <input id="username" type="text" placeholder="Username" class="form-control @error('username') is-invalid @enderror" name="username" value="Super Admin" required autocomplete="username" autofocus>
                                     <i class="ik ik-user"></i>
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password"  value="1234" required>
+                                    <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password"  value="1345" required>
                                     <i class="ik ik-lock"></i>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
                                 </div>
                                 <div class="row">
                                     <div class="col text-left">
@@ -64,7 +64,7 @@
                                         </label>
                                     </div>
                                     <div class="col text-right">
-                                        <a class="btn text-danger" href="{{url('password/forget')}}">
+                                        <a class="btn text-danger" href="{{ url('password/forget') }}">
                                             {{ __('Forgot Password?') }}
                                         </a>
                                     </div>
@@ -73,10 +73,10 @@
                                     <button class="btn btn-custom">Sign In</button>
                                 </div>
                                 <div class="register">
-                                    <p>{{ __('No account?')}} <a href="{{url('register')}}">{{ __('Sign Up')}}</a></p>
+                                    <p>{{ _('No account?')}} <a href="{{ url('register') }}">{{ _('Sign Up')}}</a></p>
                                 </div>
-                                
                             </form>
+                            
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('All Distributors')}}</h5>
+                            <h5><b>{{ __('ALL DISTRIBUTORS')}}</b></h5>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
+                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home text-dark"></i></a>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="add-distributor">{{ __('Add Distributor')}}</a>
@@ -37,35 +37,88 @@
             </div>
         </div>
 
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row align-items-end">
+                    <div class="col-lg-3">
+                        <label for="">{{ __('From Date')}}<span class="text-red">*</span></label>
+                        <input type="date" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">{{ __('To Date')}}<span class="text-red">*</span></label>
+                        <input type="date" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
+
+                    @if(session('roleName')==1)
+                    <div class="col-lg-3">
+                        <label for="">{{ __('Select Company')}}<span class="text-red">*</span></label>
+                        <select name="" class="form-control select2" style="font-size:15px;border-radius:10px;"
+                            id="companyId"></select>
+                    </div>
+               @endif
+
+                    @if(session('roleName')==1)
+                        <div class="col-lg-3">
+                            <label for="">{{ __('Select Super Stockist')}}<span class="text-red">*</span></label>
+                            <select name="" class="form-control" style="font-size:15px;border-radius:10px;"
+                            id="superStockistId"></select>
+                        </div>
+                    @endif
+                    {{-- <div class="col-lg-3">
+                        <label for="">{{ __('Select Super Stockist')}}<span class="text-red">*</span></label>
+                        <select name=""  class="form-control" style="font-size:15px;border-radius:10px;">
+                            <option value="">Select Super Stockist</option>
+                            <option value="">Milind Bankar</option>
+                            <option value="">Sagar Swami</option>
+                            <option value="">Vinod Wadkar</option>
+                        </select>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
                     {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
-                        <table id="data_table" class="table">
-                            <thead>
+                        <table id="data_table" class="table table-striped table-hover">
+                            <thead class="text-center bg-secondary">
                                 <tr>
-                                    <th>{{ __('Id')}}</th>
-                                    <th>{{ __('Name')}}</th>
-                                    <th>{{ __('Mobile')}}</th>
-                                    <th>{{ __('Email')}}</th>
-                                    <th>{{ __('Address')}}</th>
-                                    <th class="nosort">{{ __('Action')}}</th>
+                                    <th class="text-white"><b>{{ __('ID')}}</b></th>
+                                    <th class="text-white"><b>{{ __('User ID')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Name')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Mobile')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Email')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Address')}}</b></th>
+                                    <th class="nosort text-white"><b>{{ __('Action')}}</b></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($distributorDetails['Result'] as $distributor)
                                 <tr>
-                                    <td>{{ $distributor['ID'] }}</td>
-                                    <td>{{ $distributor['Name'] }}</td>
-                                    <td>{{ $distributor['MobileNo'] }}</td>
-                                    <td>{{ $distributor['Email'] }}</td>
+                                    <td class="text-center"><b>{{ $distributor['ID'] }}</b></td>
+                                    <td class="text-center"><b>{{ $distributor['USerID'] }}</b></td>
+                                    <td class="text-center">{{ $distributor['Name'] }}</td>
+                                    <td class="text-center">{{ $distributor['MobileNo'] }}</td>
+                                    <td class="text-center">{{ $distributor['Email'] }}</td>
                                     <td>{{ $distributor['Address'] }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <div class="table-actions">
-                                            <a href="#"><i class="ik ik-eye"></i></a>
-                                            <a href="#"><i class="ik ik-edit-2"></i></a>
-                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2"></i></a>
+                                            <a href="#"><i class="ik ik-eye text-dark"></i></a>
+                                            <a href="edit-distributor/{{ $distributor['MobileNo'] }}"><i class="ik ik-edit-2 text-dark"></i></a>
+                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2 text-dark"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -110,7 +163,7 @@
                 },
                 error: function(error) {
                     // Handle error response
-                    console.error('Error deleting distributor:', error);
+                    console.error('Error deleting company:', error);
                 }
             });
             } else {
@@ -141,5 +194,74 @@
     <!-- push external js -->
     <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('js/datatables.js') }}"></script>
+    <script src="{{ asset('js/get-superstockist.js') }}"></script>
+    <script src="{{ asset('js/get-company.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            
+            $('#superStockistId').change(function(){
+                var superStockistId = $(this).val();
+               
+                // AJAX call
+                $.ajax({
+                    url: "{{ url('/get-distributor') }}/",
+                    method: 'GET',
+                    data: {
+                        superStockistId: superStockistId
+                },
+                    success: function(response){
+                        // Clear existing table rows
+    
+                        console.log(response);
+                        $('#data_table tbody').empty();
+                        // Populate table with fetched data
+                        response.data.forEach(function(user){
+                            $('#data_table tbody').append('<tr>' +
+                                '<td>' + user.ID + '</td>' +
+                                '<td>' + user.Name + '</td>' +
+                                '<td>' + user.MobileNo + '</td>' +
+                                '<td>' + user.Email + '</td>' +
+                                '<td>' + user.Address + '</td>' +
+                                '<td>' + 'Action Buttons here' + '</td>' +
+                                '</tr>');
+                        });
+                    },
+                    error: function(xhr, status, error){
+                        // Handle errors
+                        console.error(error);
+                    }
+                });
+            });
+
+            //second coede
+
+            $('#companyId').change(function(){
+                var companyId = $(this).val();
+               
+                // AJAX call
+                $.ajax({
+                    url: "{{ url('/get-superstockist') }}/",
+                    method: 'GET',
+                    data: {
+                        companyId: companyId
+                },
+                    success: function(response){
+                        $('#superStockistId').empty();
+ 
+                            // Iterate over the data and append options
+                            response.data.forEach(function(item) {
+                                $('#superStockistId').append('<option value="' + item.ID + '">' + item.Name + '</option>');
+                            });
+                    },
+                    error: function(xhr, status, error){
+                        // Handle errors
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+
     @endpush
 @endsection

@@ -17,7 +17,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Manage Customer')}}</h5>
+                            <h5><b>{{ __('MANAGE CUSTOMERS')}}</b></h5>
                         </div>
                     </div>
                 </div>
@@ -38,23 +38,23 @@
                 <div class="card">
                     {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
-                        <table id="data_table" class="table">
-                            <thead>
+                        <table id="data_table" class="table table-striped table-hover">
+                            <thead class="text-center bg-secondary">
                                 <tr>
-                                    <th>{{ __('Customer Id')}}</th>
-                                    <th>{{ __('Name')}}</th>
-                                    <th>{{ __('Mobile')}}</th>
-                                    <th>{{ __('Email')}}</th>
-                                    <th>{{ __('IMEI 1')}}</th>
-                                    <th>{{ __('IMEI 2')}}</th>
-                                    <th>{{ __('Shop Name')}}</th>
-                                    <th>{{ __('Shop Number')}}</th>
-                                    <th class="nosort">{{ __('Action')}}</th>
+                                    <th class="text-white">{{ __('ID')}}</th>
+                                    <th class="text-white">{{ __('Name')}}</th>
+                                    <th class="text-white">{{ __('Mobile')}}</th>
+                                    <th class="text-white">{{ __('Email')}}</th>
+                                    <th class="text-white">{{ __('IMEI 1')}}</th>
+                                    <th class="text-white">{{ __('IMEI 2')}}</th>
+                                    <th class="text-white">{{ __('Shop Name')}}</th>
+                                    <th class="text-white">{{ __('Shop Number')}}</th>
+                                    <th class="nosort text-white">{{ __('Action')}}</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                                 <tr>
-                                    <td>{{ __('101')}}</td>
+                                    <td><b>{{ __('101')}}</b></td>
                                     <td>{{ __('Suraj Shinde')}}</td>
                                     <td>{{ __('8712327654')}}</td>
                                     <td>{{ __('surajshinde@gmail.com')}}</td>
@@ -64,14 +64,14 @@
                                     <td>{{ __('8712436521')}}</td>
                                     <td>
                                         <div class="table-actions">
-                                            <a href="#"><i class="ik ik-eye"></i></a>
-                                            <a href="#"><i class="ik ik-edit-2"></i></a>
-                                            <a href="#"><i class="ik ik-trash-2"></i></a>
+                                            <a href="#"><i class="ik ik-eye text-dark"></i></a>
+                                            <a href="#"><i class="ik ik-edit-2 text-dark"></i></a>
+                                            <a href="#"><i class="ik ik-trash-2 text-dark"></i></a>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>{{ __('102')}}</td>
+                                    <td><b>{{ __('102')}}</b></td>
                                     <td>{{ __('Suraj Shinde')}}</td>
                                     <td>{{ __('8712327654')}}</td>
                                     <td>{{ __('surajshinde@gmail.com')}}</td>
@@ -81,9 +81,9 @@
                                     <td>{{ __('8712436521')}}</td>
                                     <td>
                                         <div class="table-actions">
-                                            <a href="#"><i class="ik ik-eye"></i></a>
-                                            <a href="#"><i class="ik ik-edit-2"></i></a>
-                                            <a href="#"><i class="ik ik-trash-2"></i></a>
+                                            <a href="#"><i class="ik ik-eye text-dark"></i></a>
+                                            <a href="#"><i class="ik ik-edit-2 text-dark"></i></a>
+                                            <a href="#"><i class="ik ik-trash-2 text-dark"></i></a>
                                         </div>
                                     </td>
                                 </tr>

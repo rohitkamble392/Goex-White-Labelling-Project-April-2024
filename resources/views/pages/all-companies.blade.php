@@ -17,18 +17,20 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('All Companies')}}</h5>
+                            <h5><b>{{ __('ALL COMPANIES')}}</b></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
+                            {{-- <li class="breadcrumb-item">
+                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home text-dark"></i></a>
+                            </li> --}}
                             <li class="breadcrumb-item">
-                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="add-company">{{ __('Add Comapny')}}</a>
+                                <button class="btn btn-secondary">
+                                    <a href="add-company" class="text-white">{{ __('Add Comapny')}}</a>
+                                </button>
                             </li>
                         </ol>
                     </nav>
@@ -39,68 +41,43 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
                     {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
-                        <table id="data_table" class="table">
-                            <thead>
+                        <table id="data_table" class="table table-striped table-hover">
+                            <thead class="bg-secondary">
                                 <tr>
-                                    <th>{{ __('Id')}}</th>
-                                    <th>{{ __('Details')}}</th>
-                                    <th>{{ __('Address')}}</th>
-                                    <th>{{ __('Details')}}</th>
-                                    <th class="nosort">{{ __('Action')}}</th>
+                                    <th class="text-white"><b>{{ __('ID')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Details')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Address')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Details')}}</b></th>
+                                    <th class="nosort text-white"><b>{{ __('Action')}}</b></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($companyDetails['Result'] as $company)
                                 <tr>
-                                    <td>{{ $company['CompanyID'] }}</td>
+                                    {{-- <td class="text-center"><b>{{ $company['CompanyID'] }}</b></td> --}}
+                                    <td class="text-center">
+                                        <p><b>Company ID : </b>{{ $company['CompanyID'] }}</p>
+                                        <p><b>User ID : </b>{{ $company['User_id'] }}</p>
+                                    </td>
                                     <td>
-                                        <p><b>Company Code : </b>{{ $company['CompanyID'] }}</p>
                                         <p><b>Company Name : </b>{{ $company['Com_Name'] }}</p>
                                         <p><b>Authorized Name : </b>{{ $company['Authorized_Name'] }}</p>
                                         <p><b>Company Email : </b>{{ $company['Com_Email'] }}</p>
                                         <p><b>Contact : </b>{{ $company['Com_MobileNo'] }}</p>
-                                        {{-- 'CompanyID' => $company['CompanyID'],
-                                        'Com_Name' => $company['Com_Name'],
-                                        'Com_Email' => $company['Com_Email'],
-                                        'Com_MobileNo' => $company['Com_MobileNo'],
-                                        'Type_Buss' => $company['Type_Buss'],
-                                        'User_id' => $company['User_id'],
-                                        'Com_Address' => $company['Com_Address'],
-                                        'IS_Active' => $company['IS_Active'],
-                                        'CreatedOn' => $company['CreatedOn'],
-                                        'Created_by' => $company['Created_by'],
-                                        'Authorized_Name' => $company['Authorized_Name'],
-                                        'Pincode' => $company['Pincode'],
-                                        'State' => $company['State'],
-                                        'District' => $company['District'],
-                                        'TypeofCom' => $company['TypeofCom'],
-                                        'GSTNO' => $company['GSTNO'],
-                                        'WebSiteURL' => $company['WebSiteURL'],
-                                        'UploadLogo' => $company['UploadLogo'],
-                                        'GST_URL' => $company['GST_URL'],
-                                        'COMPANNO' => $company['COMPANNO'],
-                                        'COMPANNO_URL' => $company['COMPANNO_URL'],
-                                        'AuthPANNO_URL' => $company['AuthPANNO_URL'],
-                                        'AuthPANNO' => $company['AuthPANNO'],
-                                        'CINNO' => $company['CINNO'],
-                                        'CINNO_URL' => $company['CINNO_URL'],
-                                        'SUBDOM1' => $company['SUBDOM1'],
-                                        'SUBDOM2' => $company['SUBDOM2'],
-                                        'SUBDOM3' => $company['SUBDOM3'],
-                                        'EnterPrise_ID' => $company['EnterPrise_ID'],
-                                        'OwnerID' => $company['OwnerID'],
-                                        'OwnerName' => $company['OwnerName'],
-                                        'Email' => $company['Email'],
-                                        'PhoneNumber' => $company['PhoneNumber'],
-                                        'PanNo' => $company['PanNo'],
-                                        'Nationality' => $company['Nationality'],
-                                        'Gender' => $company['Gender'],
-                                        'FileUploadURL' => $company['FileUploadURL'],
-                                        'PANNO_URL' => $company['PANNO_URL'],
-                                        'AADHARCard_URL' => $company['AADHARCard_URL'],
-                                        'AADHARCardNO' => $company['AADHARCardNO'] --}}
                                     </td>
                                     <td>
                                         <p><b>Address : </b>{{ $company['Com_Address'] }}</p>
@@ -109,16 +86,16 @@
                                         <p><b>District : </b>{{ $company['District'] }}</p>
                                     </td>
                                     <td>
-                                        <p><b>Type of Company : </b>{{ $company['Type_Buss'] }}</p>
                                         <p><b>Website : </b>{{ $company['WebSiteURL'] }}</p>
-                                        <p><b>GST No : </b>{{ $company['GST_URL'] }}</p>
+                                        <p><b>GST No : </b>{{ $company['GSTNO'] }}</p>
                                         <p><b>Enterprise ID : </b>{{ $company['EnterPrise_ID'] }}</p>
+                                        <p><b>Create Time : </b>{{ $company['CreatedOn'] }}</p>
                                     </td>
                                     <td>
                                         <div class="table-actions">
-                                            <a href="#"><i class="ik ik-eye"></i></a>
-                                            <a href="#" class="editButton"><i class="ik ik-edit-2"></i></a>
-                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2"></i></a>
+                                            <a data-toggle="modal" data-target="#demoModal"><i class="ik ik-eye text-dark"></i></a>
+                                            <a href="edit-company/{{ $company['Com_MobileNo'] }}"><i class="ik ik-edit-2 text-dark"></i></a>
+                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2 text-dark"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -126,6 +103,49 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    {{-- <h5 class="modal-title" id="demoModalLabel"><b>{{ __('ENTER KEY DETAILS')}}</b></h5> --}}
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                            <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form class="forms-sample">
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label for="assigner_email"><b>{{ __('Comany Name')}}</b><span class="text-red">*</span></label>
+                                <input type="email" name="assigner_email" class="form-control" value="{{ $company['Com_Name'] }}"/>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="assigner_email"><b>{{ __('Company Email')}}</b><span class="text-red">*</span></label>
+                                <input type="email" name="assigner_email" class="form-control" placeholder="Enter Reason Here"/>
+                            </div>
+                        </div>
+                        {{-- <div class="form-group row">
+                            <div class="col-sm-12">
+                                <label for="assigner_email"><b>{{ __('Smart Keys')}}</b><span class="text-red">*</span></label>
+                                <textarea type="email" name="assigner_email" class="form-control" placeholder="Enter Reason Here"></textarea>
+                            </div>
+                        </div> --}}
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"><b>{{ __('ACTIVATE')}}</b></button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><b>{{ __('DEACTIVATE')}}</b></button>
                 </div>
             </div>
         </div>
@@ -172,6 +192,31 @@
             }
         });
         });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('.editButton').on('click', function(e) {
+                    e.preventDefault();
+                    var companyData = $(this).data('company');
+                    $.ajax({
+                        url: '/edit-company',
+                        method: 'POST',
+                        data: {
+                            companyData: companyData
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                });
+            });
         </script>
     
 

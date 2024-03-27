@@ -4,27 +4,46 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Session;
 
 class distributorController extends Controller
 {
     public function index()
     {
-
         $data = [
-            'userID'=>0,
-            'compID'=>0
+            // "userID"=> 0,
+            // "fromdate"=> "2024-02-18T08:32:58.834Z",
+            // "todate"=> "2024-02-18T08:32:58.834Z",
+            // "compID"=> 217,
+            // "roleID"=> 10,
+            // "seniorID"=> 0
+
+            "userID"=> Session::get('UserID'),
+            "fromdate"=> "2024-02-14T10:23:30.333Z",
+            "todate"=> "2024-02-14T10:23:30.334Z",
+            "compID"=> Session::get('Company_ID'),
+            "roleID"=> 10,
+            "seniorID"=> Session::get('Senior_ID'),
         ];
                 // return view('pages.all-employees');
 
-                $apiEndpoint = 'http://api.spillas.in/api/UserRegistration/GetDistributorDetails';
+                $apiEndpoint = 'https://spillas.in/api/UserRegistration/GetDistributorDetails';
 
                 
                 // Make a GET request to the API
-                $response = Http::post($apiEndpoint,$data);
+                $bearerToken = session('Token');
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $bearerToken,
+            'Accept' => '*/*'
+        ])->post($apiEndpoint,$data);
         
                 // Check if the request was successful
                 if ($response->successful()) {
-                    $distributorDetails = $response->json();
+                    // $distributorDetails = $response->json();
+
+                    $responseData = $response->json();
+                    $distributorDetails = $responseData;
         
                     // Return the data to the view
                     return view('pages.all-distributors', compact('distributorDetails'));
@@ -34,6 +53,7 @@ class distributorController extends Controller
                 }
     }
 
+
     public function addDistributor()
     {
         return view('pages.add-distributor');
@@ -42,28 +62,40 @@ class distributorController extends Controller
 
     public function CreateDistributor(Request $request)
     {
+        
         $data = [
             'name' => $request->input('name'),
             'address' => $request->input('address'),
             'email' => $request->input('email'),
             'mobileNo' => $request->input('mobileNo'),
             'password' => $request->input('password'),
-            'aadhar_No' => '43243253',
+            'aadhar_No' => '765123765987',
             'remarks' => 'testing',
-            'created_by' => 1,
-            'senior_id' => 1,
-            'role' => 2,
+            'created_by' => Session::get('UserID'),
+            "senior_id"=> Session::get('UserID'),
+            'role' => 10,
             'state' => $request->input('state'),
             'pincode' => $request->input('pincode'),
             'district' => $request->input('district'),
+            'companyDomain' => 'string',
+            'companytoken' =>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDgzNzAzNjYsImlzcyI6ImFwaWlzc3VlciIsImF1ZCI6ImFwaWF1ZGllbmNlIn0.85NRtNzVx_SyQS6ytyiQwqNPICAv7QMHrkiEPd-I1gw",
+            'company_ID' => Session::get('Company_ID'),
         ];
 
-        $response = Http::post('http://api.spillas.in/api/UserRegistration/CreateDistributor', $data);
+        $apiEndpoint = 'https://spillas.in/api/UserRegistration/CreateDistributor';
 
-        if ($response->successful()) {
+        $bearerToken = session('Token');
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $bearerToken,
+            'Accept' => '*/*'
+        ])->post($apiEndpoint,$data);
+
+        if ($response) {
             $responseData = $response->json();
-            // Process the response data as needed
-            // return response()->json(['message' => 'Distributor created successfully', 'data' => $responseData], 201);
+            $distributorDetails = $responseData;
+            // dd($response);
+            // return redirect('/manage-distributor')->with('success', 'Operation completed successfully!');
             return redirect('/manage-distributor')->with('success', 'Operation completed successfully!');
         } else {
             // Handle the error
@@ -80,17 +112,85 @@ class distributorController extends Controller
             'statusId' => 0
         ];
 
-        // Prepare the data for the POST request
-        // $data = $request->all();
+        $apiEndpoint = 'https://spillas.in/api/UserRegistration/DeleteDistributor';
 
-        // Make the POST request to the API
-        $response = Http::post('http://api.spillas.in/api/UserRegistration/DeleteDistributor', $data);
+        $bearerToken = session('Token');
 
-        // Check the response and handle it accordingly
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $bearerToken,
+            'Accept' => '*/*'
+        ])->post($apiEndpoint,$data);
+
         if ($response->successful()) {
             $responseData = $response->json();
-            // Process the response data as needed
-            // return response()->json(['message' => 'Company deleted successfully', 'data' => $responseData], 201);
+            $distributorDetails = $responseData;
+
+            return redirect('/manage-distributor')->with('success', 'Operation completed successfully!');
+        } else {
+            return $response->json();
+        }
+    }
+
+    public function edit($mobile)
+    {
+        $data = [
+            'searchValue' => $mobile,
+            'userId' => 0,
+        ];
+        $apiEndpoint = 'https://spillas.in/api/UserRegistration/AutoSearchDistributor';
+
+        $bearerToken = session('Token');
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $bearerToken,
+            'Accept' => '*/*'
+        ])->post($apiEndpoint,$data);
+
+        if ($response->successful()) {
+            $responseData = $response->json()['Result'][0];
+            $distributor = $responseData;
+
+            return view('pages.edit-distributor', compact('distributor'));
+        } else {
+            return response()->json(['error' => 'Failed to fetch data'], $response->status());
+        }
+    }
+
+    public function updateDistributor(Request $request)
+    {
+
+        $data = [
+            'ID' => $request->input('ID'),
+            'Name' => $request->input('name'),
+            'Address' => $request->input('address'),
+            'Email' => $request->input('email'),
+            'MobileNo' => $request->input('mobileNo'),
+            'password' => $request->input('password'),
+            'Aadhar_No' => '43243253',
+            'Remarks' => 'testing',
+            'Created_by' => Session::get('UserID'),
+            'Senior_id' => Session::get('UserID'),
+            'company_ID' => Session::get('Company_ID'),
+            'Pincode' => $request->input('pincode'),
+            'State' => $request->input('state'),
+            'District' => $request->input('district'),
+            'companyDomain' => 'string',
+            'companytoken' => 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDgzNzAzNjYsImlzcyI6ImFwaWlzc3VlciIsImF1ZCI6ImFwaWF1ZGllbmNlIn0.85NRtNzVx_SyQS6ytyiQwqNPICAv7QMHrkiEPd-I1gw',
+        ];
+
+        $apiEndpoint = 'https://spillas.in/api/UserRegistration/UpdateDistributor';
+
+        $bearerToken = session('Token');
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $bearerToken,
+            'Accept' => '*/*'
+        ])->post($apiEndpoint,$data);
+
+        if ($response->successful()) {
+            $responseData = $response->json();
+            $distributorDetails = $responseData;
+
             return redirect('/manage-distributor')->with('success', 'Operation completed successfully!');
         } else {
             // Handle the error

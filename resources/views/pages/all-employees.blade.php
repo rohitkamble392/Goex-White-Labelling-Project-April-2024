@@ -17,7 +17,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('All Employees')}}</h5>
+                            <h5><b>{{ __('All EMPLOYEES')}}</b></h5>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
+                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home text-dark"></i></a>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="add-employee">{{ __('Add Employee')}}</a>
@@ -36,35 +36,65 @@
             </div>
         </div>
 
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row align-items-end">
+                    <div class="col-lg-3">
+                        <label for="">{{ __('From Date')}}<span class="text-red">*</span></label>
+                        <input type="date" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">{{ __('To Date')}}<span class="text-red">*</span></label>
+                        <input type="date" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">{{ __('Select Distributor')}}<span class="text-red">*</span></label>
+                        <select name=""  class="form-control" style="font-size:15px;border-radius:10px;">
+                            <option value="">Select Distributor</option>
+                            <option value="">Milind Bankar</option>
+                            <option value="">Sagar Swami</option>
+                            <option value="">Vinod Wadkar</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">{{ __('Search Here')}}<span class="text-red">*</span></label>
+                        <input type="text" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
-                        <table id="data_table" class="table">
-                            <thead>
+                        <table id="data_table" class="table table-striped table-hover">
+                            <thead class="text-center bg-secondary">
                                 <tr>
-                                    <th>{{ __('Id')}}</th>
-                                    <th>{{ __('Name')}}</th>
-                                    <th>{{ __('Mobile')}}</th>
-                                    <th>{{ __('Email')}}</th>
-                                    <th>{{ __('Address')}}</th>
-                                    <th class="nosort">{{ __('Action')}}</th>
+                                    <th class="text-white"><b>{{ __('ID')}}</b></th>
+                                    <th class="text-white"><b>{{ __('User ID')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Name')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Mobile')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Email')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Address')}}</b></th>
+                                    <th class="nosort text-white"><b>{{ __('Action')}}</b></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($employeeDetails['Result'] as $employee)
                                 <tr>
-                                    <td>{{ $employee['ID'] }}</td>
-                                    <td>{{ $employee['Name'] }}</td>
-                                    <td>{{ $employee['MobileNo'] }}</td>
-                                    <td>{{ $employee['Email'] }}</td>
-                                    <td>{{ $employee['Address'] }}</td>
-                                    <td>
+                                    <td class="text-center"><b>{{ $employee['ID'] }}</b></td>
+                                    <td class="text-center"><b>{{ $employee['USerID'] }}</b></td>
+                                    <td class="text-center">{{ $employee['Name'] }}</td>
+                                    <td class="text-center">{{ $employee['MobileNo'] }}</td>
+                                    <td class="text-center">{{ $employee['Email'] }}</td>
+                                    <td class="text-center">{{ $employee['Address'] }}</td>
+                                    <td class="text-center">
                                         <div class="table-actions">
-                                            <a href="#"><i class="ik ik-eye"></i></a>
-                                            <a href="#"><i class="ik ik-edit-2"></i></a>
-                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2"></i></a>
+                                            <a href="#"><i class="ik ik-eye text-dark"></i></a>
+                                            <a href="edit-employee/{{ $employee['MobileNo'] }}"><i class="ik ik-edit-2 text-dark"></i></a>
+                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2 text-dark"></i></a>
                                         </div>
                                     </td>
                                 </tr>

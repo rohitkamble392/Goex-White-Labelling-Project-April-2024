@@ -12,80 +12,73 @@
 
     <div class="container-fluid">
     	<div class="row">
-    		<!-- page statustic chart start -->
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="all-companies" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Total Companies')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="manage-company" class="text-light">
+                                    <h6><b>{{ __('Total Company')}}</b></h6>
+                                    <h2>0</h2>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
-                        {{-- <div id="Widget-line-chart1" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="#" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Active')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="#" class="text-light">
+                                    <h6><b>{{ __('Active Company')}}</b></h6>
+                                    <h2>0</h2>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
-                        {{-- <div id="Widget-line-chart2" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="#" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Deactive')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="#" class="text-light">
+                                    <h6><b>{{ __('Deactive Company')}}</b></h6>
+                                    <h2>0</h2>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
-                        {{-- <div id="Widget-line-chart3" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="add-company" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Add Company')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="add-company" class="text-light">
+                                    <h6><b>{{ __('Add Company')}}</b></h6>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
-                        {{-- <div id="Widget-line-chart4" class="chart-line chart-shadow"></div> --}}
                     </div>
                 </div>
             </div>
-            <!-- page statustic chart end -->  
     	</div>
     </div>
 

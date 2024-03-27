@@ -1,7 +1,7 @@
 @extends('layouts.main') 
 @section('title', 'Add Company')
 @section('content')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container-fluid">
     	<div class="page-header">
             <div class="row align-items-end">
@@ -9,7 +9,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Add Company')}}</h5>
+                            <h5><b>{{ __('ADD COMPANY')}}</b></h5>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,43 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="state">{{ __('State')}}<span class="text-red">*</span></label>
-                                    <input type="text" name="state" class="form-control" placeholder="Enter State">
+                                    <select name="state" id="state" class="form-control select2">
+                                        <option value="1">Andhra Pradesh</option>
+                                        <option value="2">Arunachal Pradesh</option>
+                                        <option value="3">Assam</option>
+                                        <option value="4">Bihar</option>
+                                        <option value="5">Chhattisgarh</option>
+                                        <option value="6">Goa</option>
+                                        <option value="7">Gujarat</option>
+                                        <option value="8">Haryana</option>
+                                        <option value="9">Himachal Pradesh</option>
+                                        <option value="10">Jharkhand</option>
+                                        <option value="11">Karnataka</option>
+                                        <option value="12">Kerala</option>
+                                        <option value="13">Madhya Pradesh</option>
+                                        <option value="14">Maharashtra</option>
+                                        <option value="15">Manipur</option>
+                                        <option value="16">Meghalaya</option>
+                                        <option value="17">Mizoram</option>
+                                        <option value="18">Nagaland</option>
+                                        <option value="19">Odisha</option>
+                                        <option value="20">Punjab</option>
+                                        <option value="21">Rajasthan</option>
+                                        <option value="22">Sikkim</option>
+                                        <option value="23">Tamil Nadu</option>
+                                        <option value="24">Telangana</option>
+                                        <option value="25">Tripura</option>
+                                        <option value="26">Uttar Pradesh</option>
+                                        <option value="27">Uttarakhand</option>
+                                        <option value="28">West Bengal</option>
+                                        <option value="29">Andaman and Nicobar Islands</option>
+                                        <option value="30">Chandigarh</option>
+                                        <option value="31">Dadra and Nagar Haveli and Daman and Diu</option>
+                                        <option value="32">Delhi</option>
+                                        <option value="33">Ladakh</option>
+                                        <option value="34">Lakshadweep</option>
+                                        <option value="35">Puducherry</option>
+                                    </select>
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="district">{{ __('District')}}<span class="text-red">*</span></label>
@@ -82,7 +118,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="type_Buss">{{ __('Type of Company')}}<span class="text-red">*</span></label>
-                                    <select name="type_Buss"  class="form-control">
+                                    <select name="type_Buss" id="type_Buss" class="form-control">
                                         <option value="">Select Type</option>
                                         <option value="1">Sole Propritership</option>
                                         <option value="2">Partnership Furm</option>
@@ -92,12 +128,18 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <label for="uploadLogo">{{ __('Upload Company Logo')}}<span class="text-red">*</span></label>
-                                    <input type="file" name="uploadLogo" class="form-control" placeholder="Upload Company Logo">
-                                </div>
-                                <div class="col-sm-4">
                                     <label for="webSiteURL">{{ __('Website URL')}}<span class="text-red">*</span></label>
                                     <input type="text" name="webSiteURL" class="form-control" placeholder="Enter Company Website URL">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label for="uploadLogo">{{ __('Upload Company Logo')}}<span class="text-red">*</span></label>
+                                    <input type="file" name="uploadLogo" id="uploadLogo" class="form-control" placeholder="Upload Company Logo">
+                                    <input type="hidden" name="uploadLogoURL" id="uploadLogoURL">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="button" name="uploadLogoBtn" id="uploadLogoBtn" class="form-control" value="Upload">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -107,7 +149,11 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="panNo_URL">{{ __('Upload Owner PAN Card')}}<span class="text-red">*</span></label>
-                                    <input type="file" name="panNo_URL" class="form-control" placeholder="Upload Company Logo">
+                                    <input type="file" name="panNo_URL" id="panNo_URL" class="form-control" placeholder="Upload Company Logo">
+                                    <input type="hidden" name="uploadPAN_URL" id="uploadPAN_URL">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="button" name="uploadPanBtn" id="uploadPanBtn" class="form-control" value="Upload">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -117,7 +163,11 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="gsT_URL">{{ __('Upload GST')}}<span class="text-red">*</span></label>
-                                    <input type="file" name="gsT_URL" class="form-control" placeholder="Upload Company Logo">
+                                    <input type="file" name="gsT_URL" id="gsT_URL" class="form-control">
+                                    <input type="hidden" name="uploadgsT_URL" id="uploadgsT_URL">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="button" name="uploadGSTBtn" id="uploadGSTBtn" class="form-control" value="Upload">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -127,7 +177,11 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="aadharCard_URL">{{ __('Upload Owner Aadhar Card')}}<span class="text-red">*</span></label>
-                                    <input type="file" name="aadharCard_URL" class="form-control" placeholder="Upload Company Logo">
+                                    <input type="file" name="aadharCard_URL" id="aadharCard_URL" class="form-control">
+                                    <input type="hidden" name="uploadAadhar_URL" id="uploadAadhar_URL">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="button" name="uploadAadharBtn" id="uploadAadharBtn" class="form-control" value="Upload">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -137,7 +191,11 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="compannO_URL">{{ __('Upload Company PAN Card')}}<span class="text-red">*</span></label>
-                                    <input type="file" name="compannO_URL" class="form-control" placeholder="Upload Company Logo">
+                                    <input type="file" name="compannO_URL" id="compannO_URL" class="form-control">
+                                    <input type="hidden" name="uploadcompan_URL" id="uploadcompan_URL">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="button" name="uploadcomPanBtn" id="uploadcomPanBtn" class="form-control" value="Upload">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -147,7 +205,11 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="authPANNO_URL">{{ __('Upload Authorized Person PAN Card')}}<span class="text-red">*</span></label>
-                                    <input type="file" name="authPANNO_URL" class="form-control" placeholder="Upload Company Logo">
+                                    <input type="file" name="authPANNO_URL" id="authPANNO_URL" class="form-control">
+                                    <input type="hidden" name="uploadauthPAN_URL" id="uploadauthPAN_URL">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="button" name="uploadauthPANBtn" id="uploadauthPANBtn" class="form-control" value="Upload">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -157,7 +219,11 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="cinnO_URL">{{ __('Upload CIN')}}<span class="text-red">*</span></label>
-                                    <input type="file" name="cinnO_URL" class="form-control" placeholder="Upload Company Logo">
+                                    <input type="file" name="cinnO_URL" id="cinnO_URL" class="form-control">
+                                    <input type="hidden" name="uploadcinNo" id="uploadcinNo">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="button" name="uploadcinNoBtn" id="uploadcinNoBtn" class="form-control" value="Upload">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -179,8 +245,17 @@
                                     <label for="enterPrise_ID">{{ __('Enterprise ID')}}<span class="text-red">*</span></label>
                                     <input type="text" name="enterPrise_ID" class="form-control" placeholder="Enter Enterprise ID">
                                 </div>
+                                <div class="col-sm-4">
+                                    <label for="role">{{ __('Select Role')}}<span class="text-red">*</span></label>
+                                    {{-- <input type="text" name="roleName" class="form-control" placeholder="Enter Role"/> --}}
+                                    <select name="role" id="role" class="form-control">
+                                        @foreach ($roleDetails['Result'] as $role)
+                                            <option value="{{ $role['RoleID'] }}">{{ $role['RoleName'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                            <div class="card-header"><button type="submit" class="btn btn-secondary">{{ __('Submit')}}</button></div>
+                            <div class="card-header"><button type="submit" class="btn btn-secondary"><b>{{ __('SUBMIT')}}</b></button></div>
                         </form>
                     </div>
                 </div>
@@ -188,5 +263,260 @@
         </div>
     </div>
 
-<div class="container-fluid">
+    <script>
+        $(document).ready(function() {
+            // Initially hide the fields
+            $('#companno').closest('.form-group').hide();
+            $('#compannO_URL').closest('.form-group').hide();
+            $('#uploadcomPanBtn').closest('.form-group').hide();
+            $('#cinno').closest('.form-group').hide();
+            $('#cinnO_URL').closest('.form-group').hide();
+            $('#uploadcinNoBtn').closest('.form-group').hide();
+    
+            // When the select input changes
+            $('#type_Buss').change(function() {
+                var selectedType = $(this).val();
+                // If "Private Limited" is selected, hide the fields, otherwise show them
+                if (selectedType === '4') { // Value '4' corresponds to "Private Limited"
+                    $('#companno').closest('.form-group').hide();
+                    $('#compannO_URL').closest('.form-group').hide();
+                    $('#uploadcomPanBtn').closest('.form-group').hide();
+                    $('#cinno').closest('.form-group').hide();
+                    $('#cinnO_URL').closest('.form-group').hide();
+                    $('#uploadcinNoBtn').closest('.form-group').hide();
+                } else {
+                    $('#companno').closest('.form-group').show();
+                    $('#compannO_URL').closest('.form-group').show();
+                    $('#uploadcomPanBtn').closest('.form-group').show();
+                    $('#cinno').closest('.form-group').show();
+                    $('#cinnO_URL').closest('.form-group').show();
+                    $('#uploadcinNoBtn').closest('.form-group').show();
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#uploadLogoBtn').click(function() {
+                var fileInput = $('#uploadLogo')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        url: '/upload-image',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
+                        },
+                        success: function(response) {
+                            $('#uploadLogoURL').val(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            var errorMessage = xhr.responseJSON.message;
+                            $('#uploadLogoURL').val(errorMessage);
+                        }
+                    });
+                } else {
+                    $('#message').text('Please select an image to upload.');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#uploadPanBtn').click(function() {
+                var fileInput = $('#panNo_URL')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        url: '/upload-image',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
+                        },
+                        success: function(response) {
+                            $('#uploadPAN_URL').val(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            var errorMessage = xhr.responseJSON.message;
+                            $('#uploadPAN_URL').val(errorMessage);
+                        }
+                    });
+                } else {
+                    $('#message').text('Please select an image to upload.');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#uploadGSTBtn').click(function() {
+                var fileInput = $('#gsT_URL')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        url: '/upload-image',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
+                        },
+                        success: function(response) {
+                            $('#uploadgsT_URL').val(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            var errorMessage = xhr.responseJSON.message;
+                            $('#uploadgsT_URL').val(errorMessage);
+                        }
+                    });
+                } else {
+                    $('#message').text('Please select an image to upload.');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#uploadAadharBtn').click(function() {
+                var fileInput = $('#aadharCard_URL')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        url: '/upload-image',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
+                        },
+                        success: function(response) {
+                            $('#uploadAadhar_URL').val(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            var errorMessage = xhr.responseJSON.message;
+                            $('#uploadAadhar_URL').val(errorMessage);
+                        }
+                    });
+                } else {
+                    $('#message').text('Please select an image to upload.');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#uploadcomPanBtn').click(function() {
+                var fileInput = $('#compannO_URL')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        url: '/upload-image',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
+                        },
+                        success: function(response) {
+                            $('#uploadcompan_URL').val(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            var errorMessage = xhr.responseJSON.message;
+                            $('#uploadcompan_URL').val(errorMessage);
+                        }
+                    });
+                } else {
+                    $('#message').text('Please select an image to upload.');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#uploadauthPANBtn').click(function() {
+                var fileInput = $('#authPANNO_URL')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        url: '/upload-image',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
+                        },
+                        success: function(response) {
+                            $('#uploadauthPAN_URL').val(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            var errorMessage = xhr.responseJSON.message;
+                            $('#uploadauthPAN_URL').val(errorMessage);
+                        }
+                    });
+                } else {
+                    $('#message').text('Please select an image to upload.');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#uploadcinNoBtn').click(function() {
+                var fileInput = $('#cinnO_URL')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        url: '/upload-image',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
+                        },
+                        success: function(response) {
+                            $('#uploadcinNo').val(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            var errorMessage = xhr.responseJSON.message;
+                            $('#uploadcinNo').val(errorMessage);
+                        }
+                    });
+                } else {
+                    $('#message').text('Please select an image to upload.');
+                }
+            });
+        });
+    </script>
 @endsection

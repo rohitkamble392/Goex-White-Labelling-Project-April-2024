@@ -18,18 +18,52 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('All Customers')}}</h5>
+                            <h5><b>{{ __('ALL CUSTOMERS')}}</b></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
+                            {{-- <li class="breadcrumb-item">
                                 <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
-                            </li>
+                            </li> --}}
+                        
+                        <li class="breadcrumb-item">
+                            <button class="btn btn-secondary">
+                                <a href="add-customer" class="text-white">{{ __('Add Customer')}}</a>
+                            </button>
+                        </li>
                         </ol>
                     </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row align-items-end">
+                    <div class="col-lg-3">
+                        <label for="">{{ __('From Date')}}<span class="text-red">*</span></label>
+                        <input type="date" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">{{ __('To Date')}}<span class="text-red">*</span></label>
+                        <input type="date" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
+                    {{-- <div class="col-lg-3">
+                        <label for="">{{ __('Select Promoter')}}<span class="text-red">*</span></label>
+                        <select name=""  class="form-control" style="font-size:15px;border-radius:10px;">
+                            <option value="">Select Promoter</option>
+                            <option value="">Milind Bankar</option>
+                            <option value="">Sagar Swami</option>
+                            <option value="">Vinod Wadkar</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">{{ __('Search Here')}}<span class="text-red">*</span></label>
+                        <input type="text" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -37,55 +71,54 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
                         <table id="data_table" class="table">
-                            <thead>
+                            <thead class="text-center bg-secondary">
                                 <tr>
-                                    <th>{{ __('ID')}}</th>
-                                    <th>{{ __('Name')}}</th>
-                                    <th>{{ __('Device')}}</th>
-                                    <th>{{ __('IMEI')}}</th>
-                                    <th>{{ __('Status')}}</th>
-                                    <th>{{ __('Action')}}</th>
+                                    <th class="text-white"><b>{{ __('ID')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Customer Details')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Device Details')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Device Details')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Other Details')}}</b></th>
+                                    <th class="text-white nosort"><b>{{ __('Action')}}</b></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
-
                                 @foreach ($customerDetails['Result'] as $customer)
                                 <tr>
-                                    <td><b>{{ $customer['CustID'] }}</b></td>
+                                    <td class="text-center"><b>{{ $customer['CustID'] }}</b></td>
                                     <td>
-                                        <p><b>{{ $customer['Cust_Name'] }}</b></p>
                                         <p><b>Name : </b>{{ $customer['Cust_Name'] }}</p>
                                         <p><b>Mobile No : </b>{{ $customer['Cust_MobileNo'] }}</p>
                                         <p><b>Email ID : </b>{{ $customer['Cust_Email'] }}</p>
                                         <p><b>Policy : </b>{{ $customer['Policy_Type'] }}</p>
                                     </td>
                                     <td>
-                                        <p><b>Financiar : </b>{{ $customer['Finaciar_id'] }}</p>
+                                        <p><b>Brand : </b>{{ $customer['Brand'] }}</p>
+                                        <p><b>Model : </b>{{ $customer['Model'] }}</p>
                                         <p><b>Device ID : </b>{{ $customer['Device_ID'] }}</p>
-                                        <p><b>EMI Date : </b>{{ $customer['EMI_Date'] }}</p>
+                                        <p><b>IMEI 1 : </b>{{ $customer['IMENumber'] }}</p>
                                     </td>
                                     <td>
-                                        <p><b>IMEI 1 : </b>{{ $customer['IMENumber'] }}</p>
                                         <p><b>IMEI 2 : </b>{{ $customer['IMENumber1'] }}</p>
                                         <p><b>Serial Number : </b>{{ $customer['Serial_No'] }}</p>
                                         <p><b>SL : </b>{{ $customer['Serial_No'] }}</p>
                                         <p><b>SIM 1 : </b></p>
-                                        <p><b>SIM 2 : </b></p>
+                                    </td>
+                                    <td>                                        
+                                        <p><b>Financiar : </b>{{ $customer['Finaciar_id'] }}</p>
+                                        <p><b>EMI Date : </b>{{ $customer['EMI_Date'] }}</p>
+                                        {{-- <p><b>Created On : </b>{{ $customer['CreatedOn'] }}</p> --}}
+                                        {{-- <p><b>Created On : </b>{{ $customer['CreatedOn'] }}</p> --}}
+                                        <p><b>Created On : </b>{{ \Carbon\Carbon::parse($customer['CreatedOn'])->format('j F, Y g:i A') }}</p>
                                     </td>
                                     <td>
-                                        <p><b>Model : </b>{{ $customer['Model'] }}</p>
-                                        <p><b>Brand : </b>{{ $customer['Brand'] }}</p>
-                                        <p><b>Created On : </b></p>
-                                    </td>
-                                    <td>
-                                        <div class="table-actions">
-                                            <a href="#"><i class="ik ik-eye"></i></a>
-                                            <a href="#"><i class="ik ik-edit-2"></i></a>
-                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2"></i></a>
+                                        <div class="table-actions text-center">
+                                            <a href="#"><i class="ik ik-eye text-dark"></i></a>
+                                            {{-- <a href="edit-retailer/{{ $promoter['MobileNo'] }}"><i class="ik ik-edit-2 text-dark"></i></a> --}}
+                                            {{-- <a href="edit-customer/{{ $customer['cust_MobileNo'] }}"><i class="ik ik-edit-2"></i></a> --}}
+                                            <a href="edit-customer/{{ $customer['Cust_MobileNo'] }}"><i class="ik ik-edit-2 text-dark"></i></a>
+                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2 text-dark"></i></a>
                                         </div>
                                     </td>
                                 </tr>

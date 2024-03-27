@@ -20,7 +20,20 @@ use App\Http\Controllers\myroleController;
 use App\Http\Controllers\companyController;
 use App\Http\Controllers\distributorController;
 use App\Http\Controllers\superstokistController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\PromoterController;
+use App\Http\Controllers\TicketReasonController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\PolicyUpdateController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CountController;
+use App\Http\Controllers\userListController;
+use App\Http\Controllers\amaDeviceController;
+use App\Http\Controllers\PolicyController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\EnterpriseController;
 
+use App\Http\Middleware\RetailerMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +59,7 @@ Route::get('password/reset/{token}', [ResetPasswordController::class,'showResetF
 Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('password.update');
 
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'check.role'], function(){
 	// logout route
 	Route::get('/logout', [LoginController::class,'logout']);
 	Route::get('/clear-cache', [HomeController::class,'clearCache']);
@@ -119,7 +132,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/layouts', function () { return view('pages.layouts'); });
 
 	Route::get('/navbar', function () { return view('pages.navbar'); });
-	Route::get('/profile', function () { return view('pages.profile'); });
+	// Route::get('/profile', function () { return view('pages.profile'); });
 	Route::get('/project', function () { return view('pages.project'); });
 	Route::get('/view', function () { return view('pages.view'); });
 
@@ -161,11 +174,9 @@ Route::group(['middleware' => 'auth'], function(){
 	// SAMPLE PROJECT START
 
 	// SUPER ADMIN START
-	Route::get('/superadmin-dashboard', function () {return view('pages.super-admin.dashboard-superadmin');})->name('dashboard-superadmin');
 	// SUPER ADMIN END
 
 	// COMPANY ROUTES START
-	Route::get('/company-dashboard', function () {return view('pages.dashboard-company');})->name('dashboard-company');
 	Route::get('/company-details', function () {return view('pages.company-details');})->name('company-details');
 //	Route::get('/all-companies', function () { return view('pages.all-companies'); });
 	Route::get('/active-companies/{id}', function () { return view('pages.active-companies'); });
@@ -179,56 +190,134 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/return-policy-report', function () { return view('pages.return-policy-report'); });
 	Route::get('/assign-policy-report', function () { return view('pages.assign-policy-report'); });
 	Route::get('/return-policy-type', function () { return view('pages.return-policy-type'); });
-	Route::get('/manage-customers', function () { return view('pages.manage-customers'); });
-	Route::get('/ama-customers', function () { return view('pages.ama-customers'); });
-	Route::get('/edit-ama-customer', function () { return view('pages.edit-ama-customer'); });
+	// Route::get('/ama-customers', function () { return view('pages.ama-customers'); });
+	// Route::get('/edit-ama-customer', [PolicyController::class,'index2']);
 	Route::get('/register-customer', function () { return view('pages.register-customer'); });
-	
 
-	// TODAY API'S 13-01-2024 START
+	Route::get('/ama-customers', [amaDeviceController::class,'index']);
+
+
+	Route::get('/upload-files', function () { return view('pages.upload-files'); });
+
+
+	// GOEX WHITE LABELLING PROJECT ROUTES START
+
+	Route::middleware(['superadmin','company','superstockist','distributor','employee','retailer','promoter'])->group(function(){
+	Route::get('/superadmin-dashboard', function () {return view('pages.super-admin.dashboard-superadmin');})->name('dashboard-superadmin');
+	});
+	Route::middleware(['company','superstockist','distributor','employee','retailer','promoter'])->group(function(){
+		Route::get('/company-dashboard', function () {return view('pages.dashboard-company');})->name('dashboard-company');
+		Route::get('/manage-company', [companyController::class,'index']);
+		Route::get('/add-company', [companyController::class,'addCompany']);
+		Route::post('/create-company', [companyController::class,'CreateCompany'])->name('create-company');
+		Route::post('/create-enterprise', [companyController::class,'createEnterprise'])->name('create-enterprise');
+		Route::get('/edit-company/{mobile}', [companyController::class,'edit']);
+		Route::post('/update-company', [companyController::class,'UpdateCompany'])->name('update-company');
+		Route::get('/delete-company/{userid}/{id}', [companyController::class,'delete'])->name('delete-company');
+	});
+	
+	// SUPER STOCKIST MIDDLEWARE START
+	Route::middleware(['superstockist','distributor','employee','retailer','promoter'])->group(function(){
+		Route::get('/superstokist-dashboard', function () {return view('pages.dashboard-superstokist');})->name('dashboard-superstokist');
+		Route::get('/manage-superstokist', [superstokistController::class,'index']);
+		Route::get('/add-superstokist', [superstokistController::class,'addSuperStokist']);
+		Route::post('/create-superstokist', [superstokistController::class,'CreateSuperStokist'])->name('create-superstokist');
+		Route::get('/edit-superstokist/{mobile}', [superstokistController::class,'edit']);
+		Route::post('/update-superstokist', [superstokistController::class,'updateSuperStokist'])->name('update-superstokist');
+		Route::get('/delete-superstokist/{userid}/{id}', [superstokistController::class,'delete'])->name('delete-superstokist');
+	});
+	// SUPER STOCKIST MIDDLEWARE END
+
+	// DISTRIBUTOR MIDDLEWARE START
+	Route::middleware(['distributor','employee','retailer','promoter'])->group(function(){
+		Route::get('/distributor-dashboard', function () {return view('pages.dashboard-distributor');})->name('dashboard-distributor');
+		Route::get('/manage-distributor', [distributorController::class, 'index']);
+		Route::get('/add-distributor', [distributorController::class, 'addDistributor']);
+		Route::post('/create-distributor', [distributorController::class, 'createDistributor'])->name('create-distributor');
+		Route::get('/edit-distributor/{mobile}', [distributorController::class, 'edit']);
+		Route::post('/update-distributor', [distributorController::class, 'updateDistributor'])->name('update-distributor');
+		Route::get('/delete-distributor/{userid}/{id}', [distributorController::class, 'delete'])->name('delete-distributor');
+	});
+	// DISTRIBUTOR MIDDLEWARE END
+	
+	// EMPLOYEE MIDDLEWARE START
+	Route::middleware(['employee','retailer','promoter'])->group(function(){
+		Route::get('/employee-dashboard', function () {return view('pages.dashboard-employee');})->name('dashboard-employee');
+		Route::get('/manage-employee', [employeeController::class,'index']);
+		Route::get('/add-employee', [employeeController::class,'addEmployee']);
+		Route::post('/create-employee', [employeeController::class,'CreateEmployee'])->name('create-employee');
+		Route::get('/edit-employee/{mobile}', [employeeController::class,'edit']);
+		Route::post('/update-employee', [employeeController::class,'updateEmployee'])->name('update-employee');
+		Route::get('/delete-employee/{userid}/{id}', [employeeController::class,'delete'])->name('delete-employee');
+	});
+	// EMPLOYEE MIDDLEWARE END
+
+	// RETAILER MIDDLWARE START
+	Route::middleware(['retailer','promoter'])->group(function(){
+		Route::get('/retailer-dashboard', function () {return view('pages.dashboard-retailer');})->name('dashboard-retailer');
+		Route::get('/manage-retailer', [retailerController::class,'index']);
+		Route::get('/add-retailer', [retailerController::class,'addRetailer']);
+		Route::post('/create-retailer', [retailerController::class,'CreateRetailer'])->name('create-retailer');
+		Route::get('/edit-retailer/{mobile}', [retailerController::class,'edit']);
+		Route::post('/update-retailer', [retailerController::class,'updateRetailer'])->name('update-retailer');
+		Route::get('/delete-retailer/{userid}/{id}', [retailerController::class,'delete'])->name('delete-retailer');
+	});
+	// RETAILER MIDDLWARE END
+
+	// PROMOTER MIDDLWARE START
+	Route::group(['middleware' => 'promoter'], function(){
+		Route::get('/promoter-dashboard', function () {return view('pages.dashboard-promoter');})->name('dashboard-promoter');
+		Route::get('/manage-promoters', [PromoterController::class,'index']);
+		Route::get('/add-promoter', [PromoterController::class,'addPromoter']);
+		Route::post('/create-promoter', [PromoterController::class,'createPromoter'])->name('create-promoter');
+		Route::get('/delete-promoter/{userid}/{id}', [PromoterController::class,'delete'])->name('delete-promoter');
+	});
+		// PROMOTER MIDDLWARE END
+	
+	Route::get('/manage-customer', [customerController::class,'index']);
+	Route::get('/add-customer', [customerController::class,'addCustomer']);
+	Route::post('/create-customer', [customerController::class,'CreateCustomer'])->name('create-customer');
+	Route::get('/edit-customer/{mobile}', [customerController::class,'edit']);
+	Route::post('/update-customer', [customerController::class,'updateCustomer'])->name('update-customer');
+	Route::get('/delete-customer/{userid}/{id}', [customerController::class,'delete'])->name('delete-customer');
+
+	Route::get('/manage-customers', function () { return view('pages.manage-customers'); });
+
+
+	Route::post('/upload-image', [UploadController::class, 'uploadImage']);
+
+	Route::post('/patch-devices', [PolicyUpdateController::class, 'bulkPatch']);
+	Route::get('/upload-device', [PolicyUpdateController::class, 'index']);
+
+	Route::get('/all-tickets', [TicketController::class,'index']);
+	Route::get('/raise-ticket', [TicketController::class,'raiseTicketView']);
+	Route::post('/auto-search-retailer', [TicketController::class,'autosearchretailer']);
+	Route::post('/auto-search-customer', [TicketController::class,'autosearchcustomer']);
 
 	Route::get('/manage-role', [myroleController::class,'index']);
 	Route::post('/create-role', [myroleController::class,'createrole'])->name('create-role');
 
-	Route::get('/manage-company', [companyController::class,'index']);
-	Route::get('/all-companies', [companyController::class,'index']);
-	Route::post('/create-company', [companyController::class,'CreateCompany'])->name('create-company');
-	Route::get('/edit-company/{company}', [companyController::class,'edit'])->name('edit-company');
-	Route::post('/update-company', [companyController::class,'edit'])->name('edit-company');
-	Route::get('/delete-company/{userid}/{id}', [companyController::class,'delete'])->name('delete-company');
+	Route::get('/all-ticket-reasons', [TicketReasonController::class,'index']);
+	Route::get('/create-ticket-reason', [TicketReasonController::class,'addTicketReasonView']);
+	Route::post('/create-ticket-reason', [TicketReasonController::class,'createTicketReason'])->name('create-ticket-reason');
+	Route::get('/delete-ticket-reason/{id}', [TicketReasonController::class,'delete'])->name('delete-ticket-reason');
 
-	Route::get('/manage-superstokist', [superstokistController::class,'index']);
-	Route::get('/add-superstokist', [superstokistController::class,'addSuperStokist']);
-	Route::post('/create-superstokist', [superstokistController::class,'CreateSuperStokist'])->name('create-superstokist');
-	Route::get('/delete-superstokist/{userid}/{id}', [superstokistController::class,'delete'])->name('delete-superstokist');
-	
-	Route::get('/manage-distributor', [distributorController::class,'index']);
-	Route::get('/add-distributor', [distributorController::class,'addDistributor']);
-	Route::post('/create-distributor', [distributorController::class,'CreateDistributor'])->name('create-distributor');
-	Route::get('/delete-distributor/{userid}/{id}', [distributorController::class,'delete'])->name('delete-distributor');
+	Route::get('/profile', [ProfileController::class,'profile'])->name('profile');
 
-	Route::get('/manage-employee', [employeeController::class,'index']);
-	Route::get('/add-employee', [employeeController::class,'addEmployee']);
-	Route::post('/create-employee', [employeeController::class,'CreateEmployee'])->name('create-employee');
-	Route::get('/delete-employee/{userid}/{id}', [employeeController::class,'delete'])->name('delete-employee');
+	// PACKAGES API START
+	Route::get('/manage-packages', [OrdersController::class,'index']);
+	Route::get('/add-package', [OrdersController::class,'addPackage']);
+	Route::post('/create-package', [OrdersController::class,'CreatePackage'])->name('create-package');
+	Route::get('/delete-package/{id}', [OrdersController::class,'delete'])->name('delete-package');
+	// PACKAGES API END
 
-	Route::get('/manage-retailer', [retailerController::class,'index']);
-	Route::get('/add-retailer', [retailerController::class,'addRetailer']);
-	Route::post('/create-retailer', [retailerController::class,'CreateRetailer'])->name('create-retailer');
-	Route::get('/delete-retailer/{userid}/{id}', [retailerController::class,'delete'])->name('delete-retailer');
+	// Route::get('/company-dashboard',function(){
+		
+	// })->middleware('role:company');
 
-	Route::get('/manage-customer', [customerController::class,'index']);
-	Route::get('/add-customer', [customerController::class,'addCustomer']);
-	Route::post('/create-customer', [customerController::class,'CreateCustomer'])->name('create-customer');
-	Route::get('/delete-customer/{userid}/{id}', [customerController::class,'delete'])->name('delete-customer');
-
-
-	// TODAY API'S 13-01-2024 END
-
-	// COMPANY ROUTES END
+	// GOEX WHITE LABELLING PROJECT ROUTES END
 
 	// SUPERSTOKIST ROUTES START
-	Route::get('/superstokist-dashboard', function () {return view('pages.dashboard-superstokist');})->name('dashboard-superstokist');
 	Route::get('/super-stokist-details', function () {return view('pages.super-stokist-details');})->name('super-stokist-details');
 	Route::get('/all-superstokist', function () { return view('pages.all-superstokist'); });
 	Route::get('/active-superstokist/{id}', function () { return view('pages.active-superstokist'); });
@@ -238,7 +327,6 @@ Route::group(['middleware' => 'auth'], function(){
 	// SUPERSTOKIST ROUTES END
 
 	// DISTRIBUTOR ROUTES START
-	Route::get('/distributor-dashboard', function () {return view('pages.dashboard-distributor');})->name('dashboard-distributor');
 	Route::get('/distributor-details', function () {return view('pages.distributor-details');})->name('distributor-details');
 	Route::get('/all-distributors', [DistributorController::class,'index']);
 	// Route::get('/active-distributors/{id}', function () { return view('pages.active-distributors'); });
@@ -250,7 +338,6 @@ Route::group(['middleware' => 'auth'], function(){
 	// DISTRIBUTOR ROUTES END
 
 	// EMPLOYEE ROUTES START
-	Route::get('/employee-dashboard', function () {return view('pages.dashboard-employee');})->name('dashboard-employee');
 	Route::get('/employee-details', function () {return view('pages.employee-details');})->name('employee-details');
 	// Route::get('/all-employees', function () { return view('pages.all-employees'); });
 	// Route::get('/active-employees/{id}', function () { return view('pages.active-employees'); });
@@ -264,8 +351,8 @@ Route::group(['middleware' => 'auth'], function(){
 	// EMPLOYEE ROUTES END
 
 	// RETAILER ROUTES START
-	Route::get('/retailer-dashboard', function () {return view('pages.dashboard-retailer');})->name('dashboard-retailer');
 	Route::get('/retailer-details', function () {return view('pages.retailer-details');})->name('retailer-details');
+	Route::get('/promoter-details', function () {return view('pages.promoter-details');})->name('promoter-details');
 	// Route::get('/all-retailers', function () { return view('pages.all-retailers'); });
 	// Route::get('/active-retailers/{id}', function () { return view('pages.active-retailers'); });
 	// Route::get('/add-retailer', function () { return view('pages.add-retailer'); });
@@ -297,7 +384,26 @@ Route::group(['middleware' => 'auth'], function(){
 	// POLICIES ROUTES END
 
 	// SAMPLE PROJECT END
+
+	///count records
+	Route::get('/count-company', [CountController::class,'getCompanyCount'])->name('count-company');
+	Route::get('/count-superstockist', [CountController::class,'getSuperStockistCount'])->name('count-superstockist');
+	Route::get('/count-distributor', [CountController::class,'getDistributorCount'])->name('count-distributor');
+	Route::get('/count-employee', [CountController::class,'getEmployeeCount'])->name('count-employee');
+	Route::get('/count-retailer', [CountController::class,'getRetailerCount'])->name('count-retailer');
+	Route::get('/count-promoter', [CountController::class,'getPromoterCount'])->name('count-promoter');
+	Route::get('/count-customer', [CountController::class,'getCustomerCount'])->name('count-customer');
+	Route::get('/get-superstockist', [userListController::class,'getSuperStockistList'])->name('get-superstockist');
+	Route::get('/get-distributor', [userListController::class,'getDistributorList'])->name('get-distributor');
+	Route::get('/get-employee', [userListController::class,'getEmployeeList'])->name('get-employee');
+	Route::get('/get-retailer', [userListController::class,'getRetailerList'])->name('get-retailer');
+	Route::get('/get-promoter', [userListController::class,'getPromoterList'])->name('get-promoter');
+	Route::get('/get-company', [userListController::class,'getCompanyList'])->name('get-company');
 });
 
 Route::get('/register', function () { return view('pages.register'); });
 Route::get('/login-1', function () { return view('pages.login'); });
+
+
+Route::get('/manage-enterprise', [EnterpriseController::class,'index']);
+

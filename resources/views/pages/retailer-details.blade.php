@@ -11,195 +11,74 @@
     @endpush
 
     <div class="container-fluid">
-    	<div class="row">
-    		<!-- page statustic chart start -->
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="all-retailers" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Total Retailer')}}</p>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="manage-retailer" class="text-light">
+                                    <h6><b>{{ __('Total Retailer')}}</b></h6>
+                                    <h2 id="countDisplay4">0</h2>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="active-retailers" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Active')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="#" class="text-light">
+                                    <h6><b>{{ __('Active Retailer')}}</b></h6>
+                                    <h2>0</h2>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="deactive-retailers" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Deactive')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="#" class="text-light">
+                                    <h6><b>{{ __('Deactive Retailer')}}</b></h6>
+                                    <h2>0</h2>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="add-retailer" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Add Retailer')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="add-retailer" class="text-light">
+                                    <h6><b>{{ __('Add Retailer')}}</b></h6>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-                        <!-- analytic card start -->
-                        <!-- project-ticket end -->
-            <!-- page statustic chart end -->  
-    	</div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="page-header">
-            <div class="row align-items-end">
-                <div class="col-lg-8">
-                    <div class="page-header-title">
-                        <i class="ik ik-user-plus bg-secondary"></i>
-                        <div class="d-inline">
-                            <h5>{{ __('All Retailers')}}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <nav class="breadcrumb-container" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="add-retailer">{{ __('Add Retailer')}}</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    	<div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="dt-responsive">
-                            <table id="simpletable"
-                                   class="table table-striped table-bordered nowrap table-responsive">
-                                <thead>
-                                <tr>
-                                    <th>{{ __('Retailer ID')}}</th>
-                                    <th>{{ __('Details')}}</th>
-                                    <th>{{ __('Contact')}}</th>
-                                    <th>{{ __('Address')}}</th>
-                                    <th>{{ __('Action')}}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ __('101')}}</td>
-                                        <td>
-                                            <p><b>Code : </b>{{ __('MH2467')}}</p>
-                                            <p><b>Name : </b>{{ __('Sample Shop')}}</p>
-                                            <p><b>Contact : </b>{{ __('Sample')}}</p>
-                                            <p><b>Display No : </b>{{ __('7654321876')}}</p>
-                                            <p><b>Display Name : </b>{{ __('Sample')}}</p>
-                                            <p><b>Payment No : </b>{{ __('12345')}}</p>
-                                        </td>
-                                        <td>
-                                            <p><b>Email ID : </b>{{ __('sample@gmail.com')}}</p>
-                                            <p><b>Phone : </b>{{ __('1234512345')}}</p>
-                                            <p><b>GST No : </b>{{ __('MHRE43434')}}</p>
-                                            <p><b>Aadhaar No : </b>{{ __('123876123765')}}</p>
-                                            <p><b>PAN Name : </b>{{ __('MFDF34344')}}</p>
-                                        </td>
-                                        <td>
-                                            <p><b>Address : </b>{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, officia.')}}</p>
-                                            <p><b>Pincode : </b>{{ __('654123')}}</p>
-                                            <p><b>Location : </b>{{ __('Sample[MH]')}}</p>
-                                            <p><b>State : </b>{{ __('Sample')}}</p>
-                                            <p><b>ZeroTouch : </b>{{ __('No')}}</p>
-                                        </td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="edit-retailer"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ __('102')}}</td>
-                                        <td>
-                                            <p><b>Code : </b>{{ __('MH2467')}}</p>
-                                            <p><b>Name : </b>{{ __('Sample Shop')}}</p>
-                                            <p><b>Contact : </b>{{ __('Sample')}}</p>
-                                            <p><b>Display No : </b>{{ __('7654321876')}}</p>
-                                            <p><b>Display Name : </b>{{ __('Sample')}}</p>
-                                            <p><b>Payment No : </b>{{ __('12345')}}</p>
-                                        </td>
-                                        <td>
-                                            <p><b>Email ID : </b>{{ __('sample@gmail.com')}}</p>
-                                            <p><b>Phone : </b>{{ __('1234512345')}}</p>
-                                            <p><b>GST No : </b>{{ __('MHRE43434')}}</p>
-                                            <p><b>Aadhaar No : </b>{{ __('123876123765')}}</p>
-                                            <p><b>PAN Name : </b>{{ __('MFDF34344')}}</p>
-                                        </td>
-                                        <td>
-                                            <p><b>Address : </b>{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, officia.')}}</p>
-                                            <p><b>Pincode : </b>{{ __('654123')}}</p>
-                                            <p><b>Location : </b>{{ __('Sample[MH]')}}</p>
-                                            <p><b>State : </b>{{ __('Sample')}}</p>
-                                            <p><b>ZeroTouch : </b>{{ __('No')}}</p>
-                                        </td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="edit-retailer"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                    </div>
-                    </div>
-                </div>
-                <!-- Language - Comma Decimal Place table end -->
-            </div>  
     	</div>
     </div>
 
@@ -223,5 +102,23 @@
     <!-- push external js -->
     <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('js/datatables.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: '/count-retailer',
+            type: 'GET',
+            success: function(response) {
+                // Update HTML component with the count
+                $('#countDisplay4').text(response.count);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+</script>
+
     @endpush
 @endsection

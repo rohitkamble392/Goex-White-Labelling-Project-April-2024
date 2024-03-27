@@ -63,6 +63,17 @@
     	<div class="row">
             <div class="col-sm-12">
                 <div class="card">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div class="card-body">
                         <div class="dt-responsive">
                             <table id="all-departments"

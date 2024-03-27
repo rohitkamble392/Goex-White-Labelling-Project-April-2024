@@ -18,7 +18,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('All Retailers')}}</h5>
+                            <h5><b>{{ __('ALL RETAILERS')}}</b></h5>
                         </div>
                     </div>
                 </div>
@@ -26,10 +26,42 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home"></i></a>
+                                <a href="{{url('superadmin-dashboard')}}"><i class="ik ik-home text-dark"></i></a>
                             </li>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="add-retailer">{{ __('Add Retailer')}}</a>
+                        </li>
                         </ol>
                     </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row align-items-end">
+                    <div class="col-lg-3">
+                        <label for="">{{ __('From Date')}}<span class="text-red">*</span></label>
+                        <input type="date" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">{{ __('To Date')}}<span class="text-red">*</span></label>
+                        <input type="date" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">{{ __('Select Employee')}}<span class="text-red">*</span></label>
+                        <select name=""  class="form-control" style="font-size:15px;border-radius:10px;">
+                            <option value="">Select Employee</option>
+                            <option value="">Milind Bankar</option>
+                            <option value="">Sagar Swami</option>
+                            <option value="">Vinod Wadkar</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">{{ __('Search Here')}}<span class="text-red">*</span></label>
+                        <input type="text" name="" id="" class="form-control" style="font-size:15px;border-radius:10px;">
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,44 +71,47 @@
                 <div class="card">
                     {{-- <div class="card-header"><h3>{{ __('Data Table')}}</h3></div> --}}
                     <div class="card-body">
-                        <table id="data_table" class="table">
-                            <thead>
+                        <table id="data_table" class="table table-striped table-hover">
+                            <thead class="bg-secondary">
                                 <tr>
-                                    <th>{{ __('Retailer ID')}}</th>
-                                    <th>{{ __('Details')}}</th>
-                                    <th>{{ __('Contact')}}</th>
-                                    <th>{{ __('Address')}}</th>
-                                    <th>{{ __('Action')}}</th>
+                                    <th class="text-white"><b>{{ __('ID')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Details')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Address')}}</b></th>
+                                    <th class="text-white"><b>{{ __('Document')}}</b></th>
+                                    <th class="text-white nosort"><b>{{ __('Action')}}</b></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($retailerDetails['Result'] as $retailer)
                                 <tr>
-                                    <td><b>{{ $retailer['ID'] }}</b></td>
+                                    <td class="text-center">
+                                        <p><b>Retailer ID : </b>{{ $retailer['ID'] }}</p>
+                                        <p><b>User ID : </b>{{ $retailer['USerID'] }}</p>
+                                    </td>
+                                    {{-- <td class="text-center"><b>{{ $retailer['ID'] }}</b></td> --}}
                                     <td>
-                                        <p><b>Code : </b>{{ $retailer['ID'] }}</p>
                                         <p><b>Shop Name : </b>{{ $retailer['Shop_Name'] }}</p>
                                         <p><b>Contact Person Name : </b>{{ $retailer['ContactPer_Name'] }}</p>
-                                    </td>
-                                    <td>
                                         <p><b>Mobile : </b>{{ $retailer['MobileNo'] }}</p>
                                         <p><b>Email : </b>{{ $retailer['Email'] }}</p>
-                                        <p><b>GST No : </b>{{ $retailer['GST_No'] }}</p>
-                                        <p><b>PAN No : </b>{{ $retailer['PAN_No'] }}</p>
-                                        <p><b>Aadhar No : </b>{{ $retailer['Aadhar_No'] }}</p>
                                     </td>
                                     <td>
                                         <p><b>Address : </b>{{ $retailer['Address'] }}</p>
                                         <p><b>PinCode : </b>{{ $retailer['Pincode'] }}</p>
                                         <p><b>State : </b>{{ $retailer['State_id'] }}</p>
                                         <p><b>District : </b>{{ $retailer['District'] }}</p>
+                                    </td>
+                                    <td>
+                                        <p><b>GST No : </b>{{ $retailer['GST_No'] }}</p>
+                                        <p><b>PAN No : </b>{{ $retailer['PAN_No'] }}</p>
+                                        <p><b>Aadhar No : </b>{{ $retailer['Aadhar_No'] }}</p>
                                         <p><b>ZeroTouch : </b>{{ $retailer['Is_Zero'] }}</p>
                                     </td>
                                     <td>
-                                        <div class="table-actions">
-                                            <a href="#"><i class="ik ik-eye"></i></a>
-                                            <a href="#"><i class="ik ik-edit-2"></i></a>
-                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2"></i></a>
+                                        <div class="table-actions text-center">
+                                            <a href="#"><i class="ik ik-eye text-dark"></i></a>
+                                            <a href="edit-retailer/{{ $retailer['MobileNo'] }}"><i class="ik ik-edit-2 text-dark"></i></a>
+                                            <a href="#" class="deleteButton"><i class="ik ik-trash-2 text-dark"></i></a>
                                         </div>
                                     </td>
                                 </tr>

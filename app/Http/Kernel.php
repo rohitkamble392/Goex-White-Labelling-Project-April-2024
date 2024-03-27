@@ -42,6 +42,26 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'distributor' => [
+            \App\Http\Middleware\DistributorMiddleware::class,
+        ],
+
+        'employee' => [
+            \App\Http\Middleware\EmployeeMiddleware::class,
+        ],
+
+        'retailer' => [
+            \App\Http\Middleware\RetailerMiddleware::class,
+        ],
+
+        'promoter' => [
+            \App\Http\Middleware\PromoterMiddleware::class,
+        ],
+
+        'superadmin' => [
+            \App\Http\Middleware\SuperAdminMiddleware::class,
+        ],
+    
     ];
 
     /**
@@ -62,5 +82,13 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'check.role' => \App\Http\Middleware\CheckRoleMiddleware::class,
+        'company' => \App\Http\Middleware\CompanyMiddleware::class,
+        'superstockist' => \App\Http\Middleware\SuperStockistMiddleware::class,
+        'distributor' => \App\Http\Middleware\DistributorMiddleware::class,
+        'employee' => \App\Http\Middleware\EmployeeMiddleware::class,
+        'retailer' => \App\Http\Middleware\RetailerMiddleware::class,
+        'promoter' => \App\Http\Middleware\PromoterMiddleware::class,
+        'superadmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
     ];
 }

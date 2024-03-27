@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
+
+    public function hasAnyRole($roles)
+    {
+        return $this->roles()->whereIn('name',$roles)->exists();
+    }
 }

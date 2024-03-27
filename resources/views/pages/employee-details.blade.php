@@ -11,77 +11,74 @@
     @endpush
 
     <div class="container-fluid">
-    	<div class="row">
-    		<!-- page statustic chart start -->
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="all-employees" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Total Employee')}}</p>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="manage-employee" class="text-light">
+                                    <h6><b>{{ __('Total Employee')}}</b></h6>
+                                    <h2 id="countDisplay3">0</h2>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="active-employees" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Active')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="#" class="text-light">
+                                    <h6><b>{{ __('Active Employee')}}</b></h6>
+                                    <h2>0</h2>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="deactive-employees" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Deactive')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="#" class="text-light">
+                                    <h6><b>{{ __('Deactive Employee')}}</b></h6>
+                                    <h2>0</h2>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="add-employee" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                    <p class="mb-0">{{ __('Add Employee')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="add-employee" class="text-light">
+                                    <h6><b>{{ __('Add Employee')}}</b></h6>
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- page statustic chart end -->  
     	</div>
     </div>
     	<!-- push external js -->
@@ -104,5 +101,23 @@
     <!-- push external js -->
     <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('js/datatables.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: '/count-employee',
+            type: 'GET',
+            success: function(response) {
+                // Update HTML component with the count
+                $('#countDisplay3').text(response.count);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+</script>
+
     @endpush
 @endsection

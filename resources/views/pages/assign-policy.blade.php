@@ -10,7 +10,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-secondary"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Assign Keys')}}</h5>
+                            <h5><b>{{ __('ASSIGN KEYS')}}</b></h5>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                             @csrf
                             <div class="form-group row">
                                 <div class="col-sm-4">
-                                    <label for="policy_type">{{ __('Type of Key')}}<span class="text-red">*</span></label>
+                                    <label for="policy_type"><b>{{ __('Type of Key')}}</b><span class="text-red">*</span></label>
                                     <select name="" id="" class="form-control">
                                         <option value="">Select Type</option>
                                         <option value="">Smart Policy</option>
@@ -43,11 +43,11 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <label for="policy_count">{{ __('Number of Keys')}}<span class="text-red">*</span></label>
+                                    <label for="policy_count"><b>{{ __('Number of Keys')}}</b><span class="text-red">*</span></label>
                                     <input type="number" name="policy_count" class="form-control" placeholder="Enter Number of Policy">
                                 </div>
                                 <div class="col-sm-4">
-                                    <label for="role">{{ __('User Type')}}<span class="text-red">*</span></label>
+                                    <label for="role"><b>{{ __('User Type')}}</b><span class="text-red">*</span></label>
                                     <select name="" id="" class="form-control">
                                         <option value="">Select Type</option>
                                         <option value="">Super Admin</option>
@@ -62,25 +62,25 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-4">
-                                    <label for="per_policy_rate">{{ __('Per Key Rate')}}<span class="text-red">*</span></label>
+                                    <label for="per_policy_rate"><b>{{ __('Per Key Rate')}}</b><span class="text-red">*</span></label>
                                     <input type="number" name="per_policy_rate" class="form-control" placeholder="Enter Per Policy Rate">
                                 </div>
                                 <div class="col-sm-4">
-                                    <label for="per_policy_rate">{{ __('Total Amount')}}<span class="text-red">*</span></label>
+                                    <label for="per_policy_rate"><b>{{ __('Total Amount')}}</b><span class="text-red">*</span></label>
                                     <input type="number" name="per_policy_rate" class="form-control" placeholder="Enter Per Policy Rate">
                                 </div>
                                 <div class="col-sm-4">
-                                    <label for="expiry_duration">{{ __('Expiry Duration')}}<span class="text-red">*</span></label>
+                                    <label for="expiry_duration"><b>{{ __('Expiry Duration')}}</b><span class="text-red">*</span></label>
                                     <input type="number" name="expiry_duration" class="form-control" placeholder="Enter Expiry Duration">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-4">
-                                    <label for="email">{{ __('Assign to')}}<span class="text-red">*</span></label>
+                                    <label for="email"><b>{{ __('Assign to')}}</b><span class="text-red">*</span></label>
                                     <input type="email" name="email" class="form-control" placeholder="Enter Email">
                                 </div>
                                 <div class="col-sm-4">
-                                    <label for="role">{{ __('Extended Warranty')}}<span class="text-red">*</span></label>
+                                    <label for="role"><b>{{ __('Extended Warranty')}}</b><span class="text-red">*</span></label>
                                     <select name="" id="" class="form-control">
                                         <option value="">Select Warranty</option>
                                         <option value="">6 Month</option>
@@ -89,11 +89,11 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <label for="policy_count">{{ __('Remark')}}<span class="text-red">*</span></label>
+                                    <label for="policy_count"><b>{{ __('Remark')}}</b><span class="text-red">*</span></label>
                                     <textarea type="number" name="policy_count" class="form-control" placeholder="Enter Number of Policy"></textarea>
                                 </div>
                             </div>
-                            <div class="card-header"><button type="submit" class="btn btn-secondary">{{ __('Submit')}}</button></div>
+                            <div class="card-header"><button type="submit" class="btn btn-secondary"><b>{{ __('SUBMIT')}}</b></button></div>
                         </form>
                     </div>
                 </div>

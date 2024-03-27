@@ -13,120 +13,120 @@
     <div class="container-fluid">
     	<div class="row">
     		<!-- page statustic chart start -->
-            <div class="col-xl-4 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="company-details" class="text-white">
-                                    <h4 class="mb-0">{{ __('3,676')}}</h4>
-                                    <p class="mb-0">{{ __('Companies')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="company-details" class="text-light">
+                                    <h5><b>{{ __('Company')}}</b></h5>
+                                    {{-- <h2 id="countDisplay">0</h2> --}}
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="super-stokist-details" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Super Stokist')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="super-stokist-details" class="text-light">
+                                    <h5><b>{{ __('Super Stockist')}}</b></h5>
+                                    {{-- <h2>0</h2> --}}
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="distributor-details" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Distributor')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="distributor-details" class="text-light">
+                                    <h5><b>{{ __('Distributor')}}</b></h5>
+                                    {{-- <h2>0</h2> --}}
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="employee-details" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Employee')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="employee-details" class="text-light">
+                                    <h5><b>{{ __('Employee')}}</b></h5>
+                                    {{-- <h2>0</h2> --}}
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="retailer-details" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Retailer')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="retailer-details" class="text-light">
+                                    <h5><b>{{ __('Retailer')}}</b></h5>
+                                    {{-- <h2>0</h2> --}}
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="customer-details" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Customer')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="promoter-details" class="text-light">
+                                    <h5><b>{{ __('Promoter')}}</b></h5>
+                                    {{-- <h2>0</h2> --}}
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6">
-                <div class="card bg-secondary text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <a href="policy-details" class="text-white">
-                                    <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                    <p class="mb-0">{{ __('Policies')}}</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-secondary">
+                    <div class="widget-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="state">
+                                <a href="customer-details" class="text-light">
+                                    <h5><b>{{ __('Customer')}}</b></h5>
+                                    {{-- <h2>0</h2> --}}
                                 </a>
                             </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
+                            <div class="icon">
+                                <i class="ik ik-users"></i>
                             </div>
                         </div>
                     </div>
@@ -156,5 +156,23 @@
     <!-- push external js -->
     <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('js/datatables.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: '/count-company',
+                type: 'GET',
+                success: function(response) {
+                    // Update HTML component with the count
+                    $('#countDisplay').text(response.count);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    </script>
+
     @endpush
 @endsection
